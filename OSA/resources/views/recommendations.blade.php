@@ -8,8 +8,10 @@
 		<div class="card" >
 			<div class="card-content">
 				<div class = "row">
-					<div class = "col s12">
+					<div class = "col s10">
 						<span class="title-Suggestion"><a class="black-text" href="/supplier/{{$rel->id}}">{{$rel->company_name}}</a></span>
+					</div>
+					<div class="col s2">
 						<span class="blue-text lighten-1 right valign-wrapper">
 							@if($rel->rating > 0)
 							{{$rel->rating}}
@@ -20,8 +22,12 @@
 						</span>
 					</div>
 				</div>
-				<p>{{$category}}</p>
-				<p>Speciality</p>
+				<div class="row">
+					<div class="col s12">
+						<p>{{$category}}</p>
+						<p>Speciality</p>
+					</div>
+				</div>
 			</div>
 		</div>
 	</div>
