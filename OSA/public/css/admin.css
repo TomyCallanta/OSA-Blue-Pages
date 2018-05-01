@@ -1,0 +1,271 @@
+.admin-block{
+  margin-top: 76px;
+  width: auto;
+}
+
+.admin-block form{
+  margin-bottom: 0;
+}
+
+.admin-block input[type="checkbox"]{
+  margin: 0;
+}
+
+.admin-table th:first-child, .admin-table td:first-child{
+  padding-left: 15px;
+  padding-right: 0;
+}
+
+.admin-table tr:first-child:hover{
+  cursor:auto;
+  background-color: transparent; 
+}
+
+.admin-table tr:hover{
+  cursor: pointer;
+  background-color: #f3f3f3;
+}
+
+.admin-table td.none{
+  text-align: center;
+  background-color: #f3f3f3;
+}
+
+.admin-head, .tab a{
+  border-style: solid;
+  border-color: #d5d5d5;
+  border-width: 0 0 2px 0;
+  margin-bottom: 20px;
+}
+
+.tab{
+  display: flex;
+}
+
+.tab a{
+  text-transform: uppercase;
+  border-color: #33C3F0;
+  padding: 5px 0 5px 0;
+  text-align: center;
+  width: 50%;
+  cursor: pointer;
+}
+
+p.review{
+  overflow:auto;
+  text-overflow: clip;
+  white-space: normal 
+}
+
+@media (min-width: 550px){
+  .tab a{
+    padding: 10px 0 10px 0;
+  }
+}
+
+.tab a.current{
+  background-color: #33C3F0;
+  color: white;
+  cursor: auto;
+}
+
+.tab a.disabled{
+  color:#7f7f7f;
+  cursor: auto;
+}
+
+
+.scroll-overflow-x{
+  overflow-x: auto;
+}
+
+.admin-close{
+  margin-left: 0px;
+}
+
+.admin-menu{
+  z-index: 1001;
+  width:100%;
+  position: fixed;
+  top: 0;
+  color:white;
+}
+
+.add-button{
+  display: block;
+  width:80%;
+  margin: 1em auto;
+  font-size: 1.1em;
+  font-weight: 300;
+}
+
+.flex{
+  display: flex;
+}
+
+.msearch{
+  justify-content: flex-end;
+}
+
+.msearch input{
+  width:100%;
+  border-radius: 4px 0 0 4px;
+}
+
+.msearch button{
+  border-radius: 0 4px 4px 0;
+}
+
+.admin-btn{
+  padding: 6px;
+  margin-bottom: 0px;
+}
+
+.flex-space{
+  margin-right: 4px;
+}
+
+.body-scroll{
+  overflow: hidden;
+}
+
+.modal-pad{
+  padding:20px 20px 0 20px;
+}
+
+.modal-box.modal-open{
+  display: block;
+}
+
+.modal-box{
+   display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Sit on top */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    background-color: rgb(0,0,0); /* Fallback color */
+    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+}
+
+.admin-hor{
+  position: relative;
+  height: 100%;
+}
+
+.full-height{
+  height: 100%;
+}
+
+.admin-ver{
+  width:100%;
+  position:absolute;
+  top:76px;
+  bottom:20px;
+  background-color: white;
+  box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.2);
+  border-radius: 5px;
+}
+
+.modal-height{
+  margin-top:0;
+  height:100%;
+}
+
+.modal-head{
+  height:150px;
+  line-height: normal;
+  padding:20px;
+}
+.modal-head h1, .modal-head p{
+  margin-bottom: 15px;
+}
+
+.modal-content{
+  position:absolute;
+  top:170px;
+  bottom:20px;
+  left:20px;
+  right:20px;
+  overflow-y:auto;
+}
+
+.modal-content-alert {
+    background-color: #fefefe;
+    margin: auto;
+    padding: 50px;
+    border: 1px solid #888;
+    width: 60%;
+    height:45%;
+}
+.alert {
+    padding: 20px;
+    width: 90%;
+    background-color: #f44336;
+    color: white;
+    display: inline-block;
+
+}
+
+/* The Close Button */
+.close-btn {
+    position:relative;
+    top:-10px;
+    color: #aaaaaa;
+    float: right;
+    font-size: 40px;
+    font-weight: bold;
+}
+
+.close-btn:hover,
+.close-btn:focus {
+    color: #33C3F0;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+@media (min-width: 400px){
+  .close-btn{
+    font-size:50px;
+  }
+}
+/* dropdown */
+.dropdown {
+  float: right;
+  overflow: hidden;
+}
+.dropbtn{
+}
+.dropdown-content {
+    top:56px;
+    display: none;
+    right: 0px;
+    position: absolute;
+    background-color: #f9f9f9;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+}
+
+.dropdown-content a {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+}
+
+.dropdown-content a:hover {background-color: #f1f1f1}
+
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+
+.dropdown:hover .dropbtn {
+    background-color: #3e8e41;
+}
+
+.bottomBorder{
+  border-style: solid;
+  border-width: 0 0 1px 0;
+  border-color: #7f7f7f;
+}

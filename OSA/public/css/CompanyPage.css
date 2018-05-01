@@ -1,0 +1,78 @@
+
+.title-Company{
+  font-weight: bolder;
+  font-size: 25px;
+
+}
+.column {
+    float: left;
+    width: 50%;
+}
+
+/* Clear floats after the columns */
+.row:after {
+    content: "";
+    display: table;
+    clear: both;
+}
+
+.spacingBetweenCards{
+  margin: 10px;
+}
+
+.comment-button{
+  display: none;
+  float: right;
+}
+
+.comment-text{
+  justify-content: flex-end;
+}
+
+.starSmall{
+  font-size: 20px;
+}
+
+.starMed{
+  font-size: 29px;
+}
+.info-space{
+  padding-bottom: 10px;
+}
+
+.title-Suggestion{
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.suggest-info-pad{
+  margin-top: 10px;
+}
+.starSmall2 {
+  font-size: 24px;
+}
+
+.commentStar{
+  font-size: 13px;
+}
+
+.card-suggest{
+  max-height: 200px;
+}
+
+.supplier-rate{
+  float:right;
+
+  padding:10px;
+  height:40px;
+}
+
+.supplier-rate i{
+  padding-left: 10px;
+}
+
+@media(max-width: 600px){
+  .supplier-rate{
+    float:left;
+  }
+}

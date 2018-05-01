@@ -1,0 +1,393 @@
+.test{
+	background-color: red;
+}
+.test2{
+	background-color: blue;
+}
+
+body{
+	background-color: #f3f3f3;
+}
+.logged_avatar{
+	height:40px;
+	width:40px;
+	border-radius:20px;
+}
+
+.topnav{
+	height:56px;
+	line-height: normal;
+	overflow: hidden;
+	background-color: black;
+}
+
+
+.filter{
+	background-color: white;
+	box-shadow: 0 0 4px rgba(0, 0, 0, 0.2);
+	margin-bottom: 36px;
+}
+
+.filterButton{
+	display: inline;
+}
+
+.filterButton a{
+	color:black;
+	font-size: 16px;
+}
+
+.menu{
+	padding:10px;
+	cursor: pointer;
+}
+
+.topHead{
+	padding:10px 0 0 0;
+	font-size:30px;
+}
+
+.osa a{
+	width:200px;
+	text-align: center;
+	display: block;
+	margin:auto;
+	color: white;
+}
+.osa a:hover{
+	color: white;
+}
+
+.navbar{
+	text-align: center;
+}
+
+.header {
+    background-color: blue;
+    padding: 100px;
+    text-align: center;
+}
+
+.itemBox{
+	margin:auto;
+	width:85%;
+	display: flex;
+	flex-wrap: wrap;
+}
+
+.itemDetails{
+	position: absolute;
+	bottom: 5px; 
+	width: 100%;
+}
+
+.item{
+	width:100%;
+	padding: 10px;
+    margin: 0px 7.5px 15px 7.5px;
+	background-color: white;
+	box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.2);
+	box-sizing: border-box;
+	min-width: 180px;
+	cursor: pointer;
+	border-radius: 5px;
+	position: relative;
+	min-height: 160px;
+	overflow: hidden;
+}
+
+.item h5 a{
+	font-size: 20px;
+	color:black;
+	word-wrap: break-word;
+}
+
+.item h5{
+	margin-bottom: 0;
+}
+
+.item h5:hover{
+	text-decoration: underline;
+}
+
+.item a, .item p, .subText{
+	color:#7f7f7f;
+}
+
+.itemService {
+	margin-bottom: 1rem;
+}
+.itemContent{
+	margin-bottom: 0;
+}
+
+.item .itemRate{
+	border-style: solid;
+	border-width: 1px 0 0 0;
+	margin-top: 5px;
+	padding-top: 5px;
+	border-color: #d5d5d5;
+	color:black;
+}
+
+.searchWhole{
+	display: flex;
+	justify-content: center;
+}
+
+input[type="text"].searchTerm{
+	height: 50px;
+	border-radius: 6px 0px 0px 6px; 
+	width:500px;
+}
+
+.searchButton{
+	border: 1px solid #000;
+	padding: 7px 30px;
+	height:50px;
+	border-radius: 0px 6px 6px 0px;
+	background-color: #000;
+}
+
+.services{
+	padding: 10px;
+	float: left;
+	overflow: hidden;
+}
+.services-content{
+	border-radius: 5px;
+	padding:20px;
+	display: none;
+	position: absolute;
+	background-color: white;
+	width: 100%;
+	left:0;
+    z-index: 1; 
+	box-shadow: 0px 1px 4px 2px rgba(0, 0, 0, 0.2);
+}
+
+.services-content a{
+	color:black;
+	padding: 10px;	
+	display: block;
+}
+
+.services:hover .services-content, 
+.services:focus .services-content{
+	display: block;
+}
+
+.services:focus .services-content{
+	display: block;
+}
+.company{
+	background-color: white;
+	padding: 20px;
+	margin-bottom: 20px;
+	box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.2);
+	border-radius: 5px;
+}
+
+.company h2{
+	line-height: normal;
+	margin-bottom: 0;
+}
+
+.company a{
+	color: black;
+}
+
+.company p{
+	overflow: hidden;
+	text-overflow:  ellipsis;
+	white-space: nowrap;
+}
+
+.rDisplay{
+	margin:auto;
+	text-align: center;
+}
+
+.rDisplay span{
+	font-size: 0.7em;
+}
+.rBox{
+	padding: 20px 0 0 0;
+	border-style: solid;
+	border-width: 2px 0 0 0;
+	border-color: #d5d5d5;
+}
+
+.page{
+	top: -40px;
+}
+
+.name{
+	margin-bottom: 20px;
+}
+
+.comment{
+	margin-left: 46px;
+	margin-top: -6px;
+}
+
+.comment-picture{
+	position:absolute;
+}
+
+.comment-name{
+	font-size: 1.1em;
+	display: inline;
+}
+
+.comment-rating{
+	margin-left: 5px;
+}
+
+.rating {
+    margin-bottom: 0;
+}
+
+/* :not(:checked) is a filter, so that browsers that don’t support :checked don’t 
+   follow these rules. Every browser that supports :checked also supports :not(), so
+   it doesn’t make the test unnecessarily selective */
+.rating:not(:checked) > input {
+    position:absolute;
+    clip:rect(0,0,0,0);
+}
+
+.rating:not(:checked) > label {
+    float:right;
+    width:1em;
+    padding:0 .1em;
+    overflow:hidden;
+    white-space:nowrap;
+    cursor:pointer;
+    font-size:200%;
+    line-height:1.2;
+    color:#ddd;
+}
+
+.rating:not(:checked) > label:before {
+    content: '★ ';
+}
+
+.rating > input:checked ~ label {
+    color: #33C3F0;
+}
+
+.rating:not(:checked) > label:hover,
+.rating:not(:checked) > label:hover ~ label {
+    color: #8FDDEF;
+}
+
+.rating > input:checked + label:hover,
+.rating > input:checked + label:hover ~ label,
+.rating > input:checked ~ label:hover,
+.rating > input:checked ~ label:hover ~ label,
+.rating > label:hover ~ input:checked ~ label {
+    color: #2294AF;
+}
+
+.rating > label:active {
+    top:2px;
+    left:2px;
+}
+
+.comment-rating > span{
+	font-size: 1.5em;
+	line-height: normal;
+	content: '★ ';
+    color:#ddd;
+}
+
+.comment-rating >span.rate{
+	color: #33C3F0;
+}
+
+textarea{
+	resize: vertical;
+}
+
+.pagination {
+    display: inline-block;
+    line-height: normal;
+}
+
+.pagination a {
+    background-color: white;
+    color: black;
+    float: left;
+    padding: 8px 15px;
+    margin:2px;
+    text-decoration: none;
+    box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.2);
+}
+
+.pagination a.active {
+    background-color: #1EAEDB;
+    color: white;
+}
+
+.pagination a:hover:not(.active) {background-color: #ddd;}
+
+.pagination a:first-child {
+    border-top-left-radius: 5px;
+    border-bottom-left-radius: 5px;
+}
+
+.pagination a:last-child {
+    border-top-right-radius: 5px;
+    border-bottom-right-radius: 5px;
+}
+
+.pageHolder{
+  width:100%;
+}
+
+.pageMargin{
+  margin: 21px 0 36px 0;
+}
+
+.center{
+  text-align: center;
+}
+.hide{
+	display: none;
+}
+
+@media(min-width: 993px){
+	.container{
+		width: 80% !important;
+	}
+}
+
+.parallax-container{
+	height: 350px;
+}
+
+.round-corners{
+	border-radius: 2px !important;
+}
+
+.search{
+	z-index: 2;
+	width: 100%;
+	height:	350px;
+	position:absolute;
+}
+
+.search input[type="text"], .search input[type="text"]:focus, .search input[type="text"]{
+	box-sizing: content-box;
+	padding-left: 15px;
+	border-bottom: 0 !important;
+}
+
+.search .btn{
+	height: 46px;
+}
+
+.search button{
+	background-color: transparent;
+	border: 0;
+}

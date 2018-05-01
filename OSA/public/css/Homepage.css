@@ -1,0 +1,71 @@
+#icon{
+	width: 20px;
+	height: 20px;
+	vertical-align: middle;
+}
+
+.container{
+	margin-top: 20px;
+}
+
+.supplier-name{
+	height: 64px;
+	overflow: hidden; 
+}
+
+.supplier-data{
+	height: 67.5px;
+}
+
+.supplier-value{
+	height: 20px;
+}
+
+#bg{
+	opacity: 0.75;
+	float: left;
+	position: absolute;
+	z-index: -1;
+	min-height: 300px;
+}
+
+/* Subject to change depending on logo given*/
+#logo{
+	margin-top: 50px;
+	min-height: 100px;
+}
+
+#categorybutton,{
+	color: white;;
+}
+
+#ghostarrow{
+	visibility: hidden;
+}
+
+#categorybutton:hover #ghostarrow{
+	visibility: visible;
+}
+
+#searchdiv{
+	margin-right: 10px;
+}
+
+#search{
+	height: 35px;
+	background-color: white;
+	padding-left: 30px;
+}
+
+#cardsrow{
+	margin-top: 70px;
+}
+
+#search, #categorybutton, #searchbutton{
+	margin-top: 50px;
+	border-radius: 5px;
+}
+
+#card{
+	min-width: 200px;
+}
