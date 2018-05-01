@@ -1,14 +1,14 @@
 Run in order
 
 In OSA folder run following
-  composer update
+  1. composer update
 
 Run mysql and do following commands
-  drop database osabluepages
-  create database osabluepages
+  1. drop database osabluepages
+  2. create database osabluepages
 
 In OSA folder run following
-  php artisan migrate
+  1. php artisan migrate
 
 In sql folder run mysql and do following commands
-  source run.sql
+  1. source run.sql
