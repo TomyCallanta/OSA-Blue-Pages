@@ -10,9 +10,6 @@
 		<!--Import Google Icon Font-->
 	    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 
-	    <!--Import Additional Icons-->
-	    <link href="css/materialdesignicons.min.css" media="all" rel="stylesheet" type="text/css"/>
-
 	    <!-- Import JQuery -->
 	    <script type="text/javascript" src="{{asset('js/jquery-3.3.1.min.js')}}"></script>
 
@@ -49,7 +46,7 @@
 			      <div class="card-content">
 			      	<span class="card-title supplier-name"><strong><a class="black-text" href="/supplier/{{$supplier->id}}">{{$supplier->company_name}}</a></strong></span>
 					
-					<div class="supplier-data">
+					<div class="supplier-data overflow-hidden">
 						<a class="grey-text" href="{{route('search', ['sort' => $supplier->category_id])}}">{{$categories[$supplier->category_id - 1]->name}}</a>
 				        <p>{{$supplier->contact_no}}</p> 
 				        <p>{{$supplier->email}}</p>
@@ -84,5 +81,13 @@
 
 		<!-- Footer -->
 		@include('Footer')
+		@if(!empty($should_login))
+		<script>
+			$(function(){
+		   		$('#login-modal').modal('open');
+			});
+		</script>
+		@endif
 	</body>
+
 </html>

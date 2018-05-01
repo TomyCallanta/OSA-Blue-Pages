@@ -8,10 +8,19 @@
 body{
 	background-color: #f3f3f3;
 }
+
+.user-view .brand-logo{
+
+}
+
 .logged_avatar{
 	height:40px;
 	width:40px;
 	border-radius:20px;
+}
+
+.overflow-hidden{
+	overflow: hidden;
 }
 
 .topnav{
@@ -222,10 +231,6 @@ input[type="text"].searchTerm{
 	top: -40px;
 }
 
-.name{
-	margin-bottom: 20px;
-}
-
 .comment{
 	margin-left: 46px;
 	margin-top: -6px;
@@ -378,16 +383,46 @@ textarea{
 }
 
 .search input[type="text"], .search input[type="text"]:focus, .search input[type="text"]{
-	box-sizing: content-box;
+	-webkit-box-sizing: border-box; /* Safari/Chrome, other WebKit */
+	-moz-box-sizing: border-box;    /* Firefox, other Gecko */
+	box-sizing: border-box;
 	padding-left: 15px;
 	border-bottom: 0 !important;
 }
 
-.search .btn{
+.search button, .search .btn{
 	height: 46px;
+	border: 0;
 }
 
-.search button{
-	background-color: transparent;
-	border: 0;
+/* label underline focus color */
+.suggestion .input-field input[type=text]:focus, textarea:focus {
+ border-bottom: 1px solid #039be5 !important;
+ box-shadow: 0 1px 0 0 #000 !important;
+}
+
+.brand-logo h4{
+	margin-top: 0 !important;
+	margin-bottom: 24px !important;
+}
+
+.user-dropdown{
+	/*top: 52px;*/
+	width: 300px;
+}
+
+.user-dropdown .user-view{
+	padding: 16px 16px 0;
+}
+
+.user-dropdown a{
+	padding-left: 0;
+}
+
+.user-dropdown a.email{
+	padding-bottom: 16px;
+}
+
+.nav-wrapper .container{
+	margin-top: 0px;
 }

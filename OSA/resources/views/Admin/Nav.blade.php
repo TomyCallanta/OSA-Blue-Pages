@@ -5,9 +5,9 @@
 	</div>
 	<a id="add-btn" href="/Admin/Add" class="button button-primary add-button">Add Supplier</a>
 	<div class="normal">
-		<a href="/Admin/View/Suggestion">Suggestions</a>
-		<a href="/Admin/View/Accepted">Accepted</a>
-		<a href="/Admin/View/Rejected">Rejected</a>
+		<a href="/admin/view/Suggestion">Suggestions</a>
+		<a href="/admin/view/Accepted">Accepted</a>
+		<a href="/admin/view/Rejected">Rejected</a>
 	</div>
 </nav>
 

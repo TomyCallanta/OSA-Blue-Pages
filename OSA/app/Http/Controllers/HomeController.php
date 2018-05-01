@@ -87,4 +87,8 @@ class HomeController extends Controller
             'name' => $user->first_name." ".$user->last_name
         ]);
     }
+
+    public function mustLogin(Request $request){
+        return $this->index($request)->with(['should_login' => true]);
+    }
 }

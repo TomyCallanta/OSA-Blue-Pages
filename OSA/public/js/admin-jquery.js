@@ -22,9 +22,9 @@ $(document).ready(function(){
 	    var supplier_id = cell.parent().attr("id");
 	 
 	    if( cell.index() > 0){
+	    	console.log(url + viewURL + supplier_id);
 	    	$.get(url + viewURL + supplier_id, function (data) {
 	            //success data
-
 	            field[0].siblings("input[type='hidden']").val(data.company_name);
 	            field[1].siblings("input[type='hidden']").val(data.business_name);
 	            field[2].siblings("input[type='hidden']").val(data.address);

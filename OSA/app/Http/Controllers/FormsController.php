@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\DB;
 use App\Suggestion;
 use App\Supplier;
 use App\Category;
+use Auth;
 
 class FormsController extends Controller{
 

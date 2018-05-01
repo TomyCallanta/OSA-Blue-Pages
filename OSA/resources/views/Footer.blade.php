@@ -1,5 +1,5 @@
 <footer class="page-footer black">  
-  <div class="container">
+  <div class="container hide">
     <div class="row">
       <div class="col s12 center">
         <h6 class="grey-text text-lighten-3">Categories</h6>
@@ -24,9 +24,9 @@
       </div>
     </div>
   </div>
-    <div class="footer-copyright">
-      <div class="container">
-        © 2018 CompSAt Dev Team
+  <div class="footer-copyright">
+    <div class="container">
+      © 2018 CompSAt Dev Team
     </div>
   </div>
 </footer>

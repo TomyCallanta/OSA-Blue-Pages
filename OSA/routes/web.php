@@ -14,29 +14,29 @@ Route::get('/moreReviews/{id}', 'SupplierController@moreReviews');
 
 Route::get('/', array('as'=>'search', 'uses' => 'HomeController@index'));
 
-Route::post('/comment','HomeController@comment');
+Route::post('/comment','HomeController@comment')->middleware('auth');
 
-Route::get('/suggestion', 'FormsController@suggestionPage');
+Route::get('/suggestion', 'FormsController@suggestionPage')->middleware('auth');
 
-Route::post('/suggestion', array ('uses'=>'FormsController@newSuggestion'));
+Route::post('/suggestion', array ('uses'=>'FormsController@newSuggestion'))->middleware('auth');
 
 Route::resource('/supplier', 'SupplierController');
 
-Route::get('/Admin/View/{view}', 'AdminController@index');
+Route::get('/admin/view/{view}', 'AdminController@index')->middleware('auth');
 
-Route::get('/Admin/Get/{id}', 'AdminController@view');
+Route::get('/Admin/Get/{id}', 'AdminController@view')->middleware('auth');
 
 Route::get('/Reviews/{id}/{page}', 'ReviewsController@view');
 
-Route::put('/Admin/Edit/{id}', 'AdminController@edit');
+Route::put('/Admin/Edit/{id}', 'AdminController@edit')->middleware('auth');
 
-Route::put('/Admin/Change/{status}', 'AdminController@change');
+Route::put('/Admin/Change/{status}', 'AdminController@change')->middleware('auth');
 
-Route::delete('Admin/Delete', 'AdminController@delete');
+Route::delete('Admin/Delete', 'AdminController@delete')->middleware('auth');
 
-Route::get('/Admin/Add', 'AdminController@add');
+Route::get('/Admin/Add', 'AdminController@add')->middleware('auth');
 
-Route::post('/Admin/Add', 'FormsController@newSupplier');
+Route::post('/Admin/Add', 'FormsController@newSupplier')->middleware('auth');
 
 // Google
 Route::get('/redirect/{provider}', 'Auth\AuthController@redirect');
@@ -49,18 +49,8 @@ Route::get('google', function () {
 
 // Authentication Routes
 // Log in Routes...
-Route::get('login', 'Auth\LoginController@showLoginForm')->name('login');
+Route::get('login', 'HomeController@mustLogin')->name('login');
 Route::post('login', 'Auth\LoginController@login');
 Route::post('logout', 'Auth\LoginController@logout')->name('logout');
-
-// Registration Routes...
-Route::get('register', 'Auth\RegisterController@showRegistrationForm')->name('register');
-Route::post('register', 'Auth\RegisterController@register');
-
-// Password Reset Routes...
-Route::get('password/reset', 'Auth\ForgotPasswordController@showLinkRequestForm')->name('password.request');
-Route::post('password/email', 'Auth\ForgotPasswordController@sendResetLinkEmail')->name('password.email');
-Route::get('password/reset/{token}', 'Auth\ResetPasswordController@showResetForm')->name('password.reset');
-Route::post('password/reset', 'Auth\ResetPasswordController@reset');
 
 Route::get('logout', 'Auth\LoginController@logout');

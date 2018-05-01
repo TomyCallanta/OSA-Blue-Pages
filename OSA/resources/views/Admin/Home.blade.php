@@ -14,10 +14,6 @@
     –––––––––––––––––––––––––––––––––––––––––––––––––– -->
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <!-- FONT
-    –––––––––––––––––––––––––––––––––––––––––––––––––– -->
-    <link href="//fonts.googleapis.com/css?family=Raleway:400,300,600" rel="stylesheet" type="text/css">
-
   <!-- CSS
     –––––––––––––––––––––––––––––––––––––––––––––––––– -->
     <link rel="stylesheet" type="text/css" href="{{asset('css/general.css')}}">
@@ -29,7 +25,7 @@
   <!-- JS
     –––––––––––––––––––––––––––––––––––––––––––––––––– -->
     <script src="{{asset('js/classie.js')}}"></script>
-    <script src="{{asset('js/jquery-3.2.1.min.js')}}"></script>
+    <script src="{{asset('js/jquery-3.3.1.min.js')}}"></script>
   <script src="{{asset('js/admin-jquery.js')}}"></script>
 
   <!-- Favicon

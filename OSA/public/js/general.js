@@ -3,9 +3,11 @@ $(document).ready(function(){
   $('.modal').modal();
   $(".sidenav").sidenav();
   $(".dropdown-trigger").dropdown();
+  $('select').formSelect();
 
   $("#user_dropdown").dropdown({
-    'coverTrigger':false
+    'constrainWidth':false,
+    'coverTrigger': false
   });
 
   $('.sort_choice').click(function(){

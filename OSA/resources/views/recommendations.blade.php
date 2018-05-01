@@ -5,31 +5,29 @@
 	@if(count($related) > 0)
 	@foreach($related as $rel)
 	<div class = "col l12 m6 s12">
-		<div class="card" >
-			<div class="card-content">
-				<div class = "row">
-					<div class = "col s10">
-						<span class="title-Suggestion"><a class="black-text" href="/supplier/{{$rel->id}}">{{$rel->company_name}}</a></span>
-					</div>
-					<div class="col s2">
-						<span class="blue-text lighten-1 right valign-wrapper">
-							@if($rel->rating > 0)
-							{{$rel->rating}}
-							@else
-							-
-							@endif
-							<i class="starSmall2 material-icons">star</i>
-						</span>
-					</div>
-				</div>
-				<div class="row">
-					<div class="col s12">
-						<p>{{$category}}</p>
-						<p>Speciality</p>
-					</div>
-				</div>
+		<div class="card hoverable white">
+	      <div class="card-content">
+	      	<span class="card-title supplier-name"><strong><a class="black-text" href="/supplier/{{$rel->id}}">{{$rel->company_name}}</a></strong></span>
+			
+			<div class="supplier-data overflow-hidden">
+				<a class="grey-text" href="{{route('search', ['sort' => $rel->category_id])}}">{{$categories[$rel->category_id - 1]->name}}</a>
+		        <p>{{$rel->contact_no}}</p> 
+		        <p>{{$rel->email}}</p>
 			</div>
-		</div>
+
+	        <div class="divider"></div>
+	        <div class="supplier-value">
+		        <p class="valign-wrapper right blue-text lighten-3">
+		        	@if($rel->rating > 0)
+		        	{{$rel->rating}}
+		        	@else
+		        	-
+		        	@endif
+		        	<i class="material-icons">star</i>
+		        </p>
+	        </div>
+	      </div>
+	    </div>
 	</div>
 	@endforeach
 

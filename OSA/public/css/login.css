@@ -1,0 +1,45 @@
+.g-btn{
+ 	border-radius: 2px;
+ 	width:235.767px;
+ 	margin: auto;
+ 	background-color: white;
+ 	font: 'Roboto', sans-serif;
+ }
+
+.modal-header{
+	position:absolute;
+	top:0;
+	width: 100%; 
+	color: white;
+	background-color: black;
+	padding: 10px;
+}
+
+.modal.modal-fixed-header{
+	height:50%;
+}
+
+.modal-fixed-header .slide,.modal-fixed-header .s{
+	position: absolute;
+	width: 100%;
+	height: calc(100% - 44px);
+	max-height: 100%;
+	top: 44px;
+	overflow-y: auto
+}
+
+.modal{
+	width: 33.333333%;
+}
+
+@media(max-width: 992px){	
+	.modal{
+		width: 66.666666%;
+	}
+}
+
+@media(max-width: 600px){
+	.modal{
+		width: 90%;
+	}
+}

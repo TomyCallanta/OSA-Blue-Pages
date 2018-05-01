@@ -19,18 +19,31 @@ class AdminController extends Controller
         if($category == "All"){
         	$category = null;
         }
-    	$suppliers = Searchy::search('supplier')
-                            ->fields('company_name', 'business_name', 'address')
-                            ->query($search)
-                            ->getQuery()
-                            ->when($category, function ($query) use($category){
-							return $query->where('category_id', $category);
-    						})
-    						->where('state', $view)
-    						->orderBy('rating', 'desc')
-    						->simplePaginate(12);
+
+        if($search){   
+        	$suppliers = Searchy::search('supplier')
+                        ->fields('company_name', 'business_name', 'address')
+                        ->query($search)
+                        ->getQuery()
+                        ->when($category, function ($query) use($category){
+                            return $query->where('category_id', $category);
+                            })
+                        ->where('state', $view)
+                        ->orderBy('rating', 'desc')
+                        ->simplePaginate(12);
+        }else{
+            $suppliers =Supplier::when($category, function ($query) use($category){
+                            return $query->where('category_id', $category);
+                            })
+                        ->where('state', $view)
+                        ->orderBy('rating', 'desc')
+                        ->simplePaginate(12);
+        }
+
+
+                            
     	$categoriesList = Category::all();
-    	
+
     	return view('Admin.Home', ['suppliers' => $suppliers, 'categories' => $categoriesList, 'current' => $category, 'search' => $search, 'view' => $view]);
     }
     /*
@@ -41,11 +54,10 @@ class AdminController extends Controller
     */
     public function view($id){
         $supplier = Supplier::find($id);
-        $suggestion = Suggestion::where('supplier_id', $id);
+        $suggestion = Suggestion::where('supplier_id', $id)->get();
         $reviews = Review::where('supplier_id', $id)->get();
 
-        if($suggestion != null){
-            $suggestion->toArray();
+        if(is_null($suggestion)){
             $suggestor = User::find($suggestion->user_id);
             $name = $suggestor->first_name . " " . $suggestor->last_name;
             return response()->json([
@@ -124,7 +136,11 @@ class AdminController extends Controller
         $supplierIDs = $request->suppliers;
         foreach($supplierIDs as $id){
             $supplier = Supplier::find($id);
-            
+            $suggestion = DB::table('suggestion')->where('supplier_id', $supplier->id);
+            if($suggestion){
+                $suggestion->delete();
+            }
+
             $supplier->delete();
         }
     }
