@@ -1,4 +1,4 @@
-Run in order
+Preparation
 
 In OSA folder run following
   1. composer update
@@ -12,3 +12,8 @@ In OSA folder run following
 
 In sql folder run mysql and do following commands
   1. source run.sql
+
+Running
+
+In OSA folder run following
+  1. php artisan serve
