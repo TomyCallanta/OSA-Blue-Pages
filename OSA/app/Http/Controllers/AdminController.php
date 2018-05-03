@@ -39,12 +39,17 @@ class AdminController extends Controller
                         ->orderBy('rating', 'desc')
                         ->simplePaginate(12);
         }
-
-
                             
     	$categoriesList = Category::all();
 
-    	return view('Admin.Home', ['suppliers' => $suppliers, 'categories' => $categoriesList, 'current' => $category, 'search' => $search, 'view' => $view]);
+    	return view('Admin.base', [
+            'suppliers' => $suppliers, 
+            'categories' => $categoriesList, 
+            'current' => $category, 
+            'search' => $search, 
+            'view' => $view,
+            'page' => 'Admin.View'
+        ]);
     }
     /*
     *Sends complete supplier info to modal as json
@@ -147,7 +152,10 @@ class AdminController extends Controller
 
     public function add(){
         $categoriesList = Category::all();
-        return view('Admin.Home', ['categories' => $categoriesList]);
+        return view('Admin.Home', [
+            'categories' => $categoriesList,
+            'view' => 'Add'
+        ]);
     }
 
     public function newAdmin(Request $request){

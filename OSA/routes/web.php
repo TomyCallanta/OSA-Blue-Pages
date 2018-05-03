@@ -33,13 +33,13 @@ Route::get('/Admin/Get/{id}', 'AdminController@view')->middleware('role:Admin');
 
 Route::get('/Reviews/{id}/{page}', 'ReviewsController@view');
 
-Route::put('/Admin/Edit/{id}', 'AdminController@edit')->middleware('role:Admin');
+Route::put('/dmin/Edit/{id}', 'AdminController@edit')->middleware('role:Admin');
 
 Route::put('/Admin/Change/{status}', 'AdminController@change')->middleware('role:Admin');
 
 Route::delete('Admin/Delete', 'AdminController@delete')->middleware('role:Admin');
 
-Route::get('/Admin/Add', 'AdminController@add')->middleware('role:Admin');
+Route::get('/admin/add', 'AdminController@add')->middleware('role:Admin');
 
 Route::post('/Admin/Add', 'FormsController@newSupplier')->middleware('role:Admin');
 
