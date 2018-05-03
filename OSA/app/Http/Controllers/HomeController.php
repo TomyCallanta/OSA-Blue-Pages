@@ -40,7 +40,6 @@ class HomeController extends Controller
         }
         
     	$categoriesList = Category::all();
-
     	return view('Homepage', ['suppliers' => $suppliers, 'categories' => $categoriesList, 'current' => $category, 'search' => $search]);
     }
 

@@ -17,9 +17,9 @@ $(document).ready(function(){
 
 	$('#suppliers').on('click','tbody tr', function (evt) {
 		var view =  $('table').siblings('input').val();
-		var viewURL = "/Get/";
 	    var cell= $(evt.target).closest('td');
 	    var supplier_id = cell.parent().attr("id");
+		var viewURL = "/Get/";
 	 
 	    if( cell.index() > 0){
 	    	console.log(url + viewURL + supplier_id);

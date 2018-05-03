@@ -8,19 +8,6 @@
 	margin-top: 20px;
 }
 
-.supplier-name{
-	height: 64px;
-	overflow: hidden; 
-}
-
-.supplier-data{
-	height: 67.5px;
-}
-
-.supplier-value{
-	height: 20px;
-}
-
 #bg{
 	opacity: 0.75;
 	float: left;

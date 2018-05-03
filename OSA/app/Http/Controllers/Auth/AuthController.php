@@ -17,7 +17,6 @@ class AuthController extends Controller
   
     protected $redirectTo = '/';
 
-
     public function __construct()
     {
         $this->middleware('guest', ['except' => 'logout']);
@@ -55,21 +54,26 @@ class AuthController extends Controller
         if($provider == "google"){
             $user = User::where('google_id', $socialite_id)->first();
 
-            // register (if no user)
+            // register (if user is not registered && using an obf account)
             if (!$user) {
-                $user = new User;
-                $user->first_name = $socialite_user->user['name']['givenName'];
-                $user->last_name = $socialite_user->user['name']['familyName'];
-                $user->avatar = $socialite_user->avatar_original;
-                $user->email = $socialite_user->email;
-                $user->google_id = $socialite_id;
-                $user->account_type = "User";
-                $user->save();
+                if($socialite_user->user['domain'] == "obf.ateneo.edu"){
+                    $user->first_name = $socialite_user->user['name']['givenName'];
+                    $user->last_name = $socialite_user->user['name']['familyName'];
+                    $user->avatar = $socialite_user->avatar_original;
+                    $user->email = $socialite_user->email;
+                    $user->google_id = $socialite_id;
+                    $user->account_type = "User";
+                    $user->save();
+                }else{
+                    redirect('/must-log-in');
+                }
             }
         }
 
         Auth::loginUsingId($user->id);
-        
+        if($user->account_type == "Admin"){
+            return redirect('/admin/view/Suggestion');
+        }
         return redirect('/');
     }
 

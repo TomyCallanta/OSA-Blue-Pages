@@ -149,4 +149,8 @@ class AdminController extends Controller
         $categoriesList = Category::all();
         return view('Admin.Home', ['categories' => $categoriesList]);
     }
+
+    public function newAdmin(Request $request){
+
+    }
 }

@@ -1,3 +1,14 @@
+
+body {
+display: flex;
+min-height: 100vh;
+flex-direction: column;
+}
+
+main {
+flex: 1 0 auto;
+}
+  
 .test{
 	background-color: red;
 }
@@ -390,7 +401,9 @@ textarea{
 	border-bottom: 0 !important;
 }
 
-.search button, .search .btn{
+.search button{
+	cursor: pointer;
+	text-transform: uppercase;
 	height: 46px;
 	border: 0;
 }
@@ -425,4 +438,36 @@ textarea{
 
 .nav-wrapper .container{
 	margin-top: 0px;
+}
+
+.dropdown-triangle{
+	height: 12px !important;
+	min-height: 0 !important;
+}
+
+.dropdown-content .dropdown-triangle span{
+	height: 0;
+	width: 0;
+	padding: 0;
+	border-left: 6px solid transparent !important; 
+	border-right: 6px solid transparent !important; 
+	border-bottom: 12px solid #2196f3 !important;
+	margin-left: 259px; 
+}
+
+.supplier-name{
+	height: 64px;
+	overflow: hidden; 
+}
+
+.supplier-data{
+	height: 67.5px;
+}
+
+.supplier-value{
+	height: 20px;
+}
+
+strong{
+	font-weight: 600;
 }
