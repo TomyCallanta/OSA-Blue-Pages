@@ -57,6 +57,7 @@ class AuthController extends Controller
             // register (if user is not registered && using an obf account)
             if (!$user) {
                 if($socialite_user->user['domain'] == "obf.ateneo.edu"){
+                    $user = new User;
                     $user->first_name = $socialite_user->user['name']['givenName'];
                     $user->last_name = $socialite_user->user['name']['familyName'];
                     $user->avatar = $socialite_user->avatar_original;

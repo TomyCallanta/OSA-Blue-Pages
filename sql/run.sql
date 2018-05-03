@@ -1,3 +1,3 @@
 use osabluepages;
 source category.sql;
-source out.out;
+source out.sql;

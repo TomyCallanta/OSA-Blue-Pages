@@ -23,19 +23,21 @@ class HomeController extends Controller
         if(!empty($search)){
 
             $suppliers = Searchy::search('supplier')
-                                ->fields('company_name', 'business_name', 'address')
+                                ->fields('company_name', 'business_name', 'address','tags')
                                 ->query($search)
                                 ->getQuery()
                                 ->when($category, function ($query) use($category){
                                     return $query->where('category_id', $category);
                                 })
                                 ->where('state', "Accepted")
+                                ->orderBy('rating','desc')
                                 ->simplePaginate(12);
         }else{        
         	$suppliers = Supplier::when($category, function ($query) use($category){
         							return $query->where('category_id', $category);
         						})
                                 ->where('state', "Accepted")
+                                ->orderBy('rating','desc')
                                 ->simplePaginate(12);
         }
         

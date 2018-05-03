@@ -24,10 +24,17 @@
 			
 			<div class="col s12 l9">
 				<div class="row">
-					<div class="col s12 l10">
+					<div class="col s12 m9 l10">
 						<input class="white round-corners" type="text" name="search" value="{{!empty($search) ? $search : ''}}">
 					</div>
-					<div class="col s2 hide-on-med-and-down">
+					<div class="col s12 m3 l2  hide-on-small-only">
+						<button class="col s12 round-corners white-text blue lighten-1" type="submit">SEARCH</button>
+					</div>
+				</div>
+			</div>
+			<div class="col s12 hide-on-med-and-up">
+				<div class="row">
+					<div class="col s12">
 						<button class="col s12 round-corners white-text blue lighten-1" type="submit">SEARCH</button>
 					</div>
 				</div>

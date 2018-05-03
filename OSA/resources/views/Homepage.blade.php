@@ -47,31 +47,45 @@
 			      	<span class="card-title supplier-name"><strong><a class="black-text" href="/supplier/{{$supplier->id}}">{{$supplier->company_name}}</a></strong></span>
 					
 					<div class="supplier-data overflow-hidden">
-						<a class="grey-text" href="{{route('search', ['sort' => $supplier->category_id])}}">{{$categories[$supplier->category_id - 1]->name}}</a>
+						<a class="black-text" href="{{route('search', ['sort' => $supplier->category_id])}}">{{$categories[$supplier->category_id - 1]->name}}</a>
 				        <p>{{$supplier->contact_no}}</p> 
-				        <p>{{$supplier->email}}</p>
+				        <p><a class="black-text" href="mailto:{{$supplier->email}}">{{$supplier->email}}</a></p>
 					</div>
 
 			        <div class="divider"></div>
-			        <div class="supplier-value">
-				        <p class="valign-wrapper right blue-text lighten-3">
+			        <div class="full-width supplier-value">
+			        	<span><i class="blue-text material-icons tooltipped" data-position="top" data-tooltip="OSA Verified">verified_user</i></span>
+				        <span class="right valign-wrapper blue-text lighten-3">
 				        	@if($supplier->rating > 0)
 				        	{{$supplier->rating}}
 				        	@else
 				        	-
 				        	@endif
 				        	<i class="material-icons">star</i>
-				        </p>
+				        </span>
 			        </div>
 			      </div>
 			    </div>
 		  	  </div>
 			@endforeach
+			@if($suppliers->count() < 1)
+				@if($search)
+					<div class="col s12">
+						<h4>No results match: <span class="underline">{{$search}}</span></h4>
+					</div>
+				@else
+					<div class="col s12">
+						<h4 class="center">No Results</h4>
+					</div>
+				@endif
+			@endif
 			</div>
 
 			<div class="row">
-		    	<?php $paginator = $suppliers->appends(['sort' => $current,'search' => $search])  ; ?>
-				@include('pagination/limit_links')
+				@if($suppliers->count() > 0)
+			    	<?php $paginator = $suppliers->appends(['sort' => $current,'search' => $search])  ; ?>
+					@include('pagination/limit_links')
+				@endif
 			</div>
 		</div>
 

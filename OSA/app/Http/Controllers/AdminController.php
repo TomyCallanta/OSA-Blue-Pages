@@ -161,4 +161,16 @@ class AdminController extends Controller
     public function newAdmin(Request $request){
 
     }
+
+    public function editCategory(Request $request){
+        $category_id = $request->category_id;
+        $category = Category::find($category_id);
+
+        if(!$category){
+            $category = new Category;
+        }
+
+        $category->name = $request->name;
+        $category->save;
+    }
 }

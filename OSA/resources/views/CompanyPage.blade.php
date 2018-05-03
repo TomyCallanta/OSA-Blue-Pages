@@ -51,7 +51,13 @@
 						<div class="card-content">
 							<div class = "row">
 								<div class = "col s12 m11" >
-									<span class=" title-Company">{{$supplier->company_name}}</span>
+									<span class="title-Company"><strong></strong>{{$supplier->company_name}}</span>
+
+									@if($supplier->verified)
+									<i class="tooltipped blue-text lighten-1 material-icons" data-position="top" data-tooltip="OSA Verified">verified_user</i>
+									@endif
+
+									<h6 class="no-margin"><strong>{{$supplier->business_name}}</strong></h6>
 									<input id="supplier_id" type="hidden" name="" value="{{$supplier->id}}">
 
 									<p><a class="black-text" href="{{route('search', ['sort' => $supplier->category_id])}}"> {{ $category }} </a> </p>
@@ -93,12 +99,12 @@
 								<div class = "col s12 m6">
 									@if(!empty($supplier->email))
 									<h6><strong>Email</strong></h6>
-									<p class ="info-space">{{$supplier->email}}</p>
+									<p class ="info-space"><a href="mailto:{{$supplier->email}}">{{$supplier->email}}</a></p>
 									@endif
 
 									@if(!empty($supplier->fbpage))
 									<h6><strong>Facebook Account</strong></h6>
-									<p class ="info-space"><a href="{{$supplier->fbpage}}">{{$supplier->fbpage}}</a></p>
+									<p class ="info-space"><a href="{{$supplier->fbpage}}">{{$supplier->company_name}}</a></p>
 									@endif
 
 									@if(!empty($supplier->website))
@@ -107,6 +113,18 @@
 									@endif
 								</div>
 							</div>
+
+							@if($supplier->tags)
+								<?php $tags = explode("|", $supplier->tags) ?>
+							<div class="row">
+								<div class="col s12">
+
+									@foreach($tags as $tag)
+										<div class="blue lighten-1 white-text chip">{{$tag}}</div>
+									@endforeach
+								</div>
+							</div>
+							@endif
 						</div>
 					</div>
 
@@ -121,7 +139,7 @@
 											@if(Auth::check())
 											<img src="{{Auth::user()->avatar}}">
 											@else
-											<img src="">
+											<span class="grey"></span>
 											@endif
 										</a>
 										<div class="content">

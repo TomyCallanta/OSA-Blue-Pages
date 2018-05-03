@@ -16,15 +16,16 @@
 			</div>
 
 	        <div class="divider"></div>
-	        <div class="supplier-value">
-		        <p class="valign-wrapper right blue-text lighten-3">
-		        	@if($rel->rating > 0)
-		        	{{$rel->rating}}
+	        <div class="full-width supplier-value">
+	        	<span><i class="blue-text material-icons tooltipped" data-position="top" data-tooltip="OSA Verified">verified_user</i></span>
+		        <span class="right valign-wrapper blue-text lighten-3">
+		        	@if($supplier->rating > 0)
+		        	{{$supplier->rating}}
 		        	@else
 		        	-
 		        	@endif
 		        	<i class="material-icons">star</i>
-		        </p>
+		        </span>
 	        </div>
 	      </div>
 	    </div>

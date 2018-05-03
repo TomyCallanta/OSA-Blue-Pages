@@ -357,8 +357,8 @@ textarea{
     border-bottom-right-radius: 5px;
 }
 
-.pageHolder{
-  width:100%;
+.pageHolder, .full-width{
+  width: 100% !important;
 }
 
 .pageMargin{
@@ -393,6 +393,10 @@ textarea{
 	position:absolute;
 }
 
+.no-margin{
+	margin:0;
+}
+
 .search input[type="text"], .search input[type="text"]:focus, .search input[type="text"]{
 	-webkit-box-sizing: border-box; /* Safari/Chrome, other WebKit */
 	-moz-box-sizing: border-box;    /* Firefox, other Gecko */
@@ -406,6 +410,12 @@ textarea{
 	text-transform: uppercase;
 	height: 46px;
 	border: 0;
+}
+
+@media(max-width: 992px){
+	.search button{
+		height: 42px;
+	}
 }
 
 /* label underline focus color */
@@ -462,12 +472,17 @@ textarea{
 
 .supplier-data{
 	height: 67.5px;
+	margin-bottom: 10px;
 }
 
 .supplier-value{
-	height: 20px;
+	margin-top: 10px;
 }
 
 strong{
 	font-weight: 600;
+}
+
+.underline{
+	text-decoration: underline;
 }
