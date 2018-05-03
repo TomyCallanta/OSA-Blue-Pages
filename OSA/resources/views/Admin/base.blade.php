@@ -23,13 +23,13 @@
     </head>
     <body>
         <div class="navbar-fixed">
-            <nav>
+            <nav>   
                <div class="nav-wrapper black">
                     <a href="/admin/view/Suggestion" class="brand-logo">OSA Blue Pages</a>
                     <a href="#" data-target="mobile-sv" class="sidenav-trigger"><i class="material-icons">menu</i></a>
 
                     <ul class="right hide-on-med-and-down valign-wrapper">
-                        <li class="black-text" style="cursor:default">align</li>
+                        <li><a class="btn blue lighten-1" href="/">User View</a></li>
                         <li>
                             <a id="user_dropdown" class="dropdown-trigger valign-wrapper" href="#" data-target="user_options">
                                 <img class="logged_avatar" src="{{\Auth::user()->avatar}}">

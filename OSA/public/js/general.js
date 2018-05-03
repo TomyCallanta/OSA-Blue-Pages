@@ -13,6 +13,9 @@ $(document).ready(function(){
 
   $('.sort_choice').click(function(){
      filter = parseInt($(this).attr('id').split('_').pop());
+     if(filter == 0){
+      filter="";
+     }
      $("input[name='sort']").val(filter);
      $('#sort_button').html($(this).html() + "<i class='right material-icons'>arrow_drop_down</i>");
   });

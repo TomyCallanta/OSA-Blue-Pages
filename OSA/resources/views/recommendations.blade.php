@@ -10,9 +10,9 @@
 	      	<span class="card-title supplier-name"><strong><a class="black-text" href="/supplier/{{$rel->id}}">{{$rel->company_name}}</a></strong></span>
 			
 			<div class="supplier-data overflow-hidden">
-				<a class="grey-text" href="{{route('search', ['sort' => $rel->category_id])}}">{{$categories[$rel->category_id - 1]->name}}</a>
+				<a class="black-text" href="{{route('search', ['sort' => $rel->category_id])}}">{{$categories[$rel->category_id - 1]->name}}</a>
 		        <p>{{$rel->contact_no}}</p> 
-		        <p>{{$rel->email}}</p>
+		        <p><a class="black-text" href="mailto:{{$rel->email}}">{{$rel->email}}</a></p>
 			</div>
 
 	        <div class="divider"></div>

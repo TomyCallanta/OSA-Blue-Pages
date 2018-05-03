@@ -158,7 +158,7 @@
 														@endfor
 													</div>
 													<div>
-														<textarea class="materialize-textarea" id="comment-field" placeholder="What's on your mind?" type="text" name="review_content"></textarea>
+														<textarea class="materialize-textarea" id="comment-field" placeholder="Tell us about {{$supplier->company_name}}" type="text" name="review_content"></textarea>
 														<div id="comment-buttons" class = "comment-button">
 															@if(Auth::check())
 															<a id="cancel-comment" style= "padding-right:20px;" class="black-text">CANCEL</a>

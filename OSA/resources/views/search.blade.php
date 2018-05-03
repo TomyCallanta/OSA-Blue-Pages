@@ -13,9 +13,9 @@
 							@endif
 						<i class="right material-icons">arrow_drop_down</i></button>
 						<ul id="categories" class="dropdown-content">
-							<li ><a class="blue-text lighten-1 sort_choice" href="">All Categories</a></li>
+							<li ><a class="blue-text lighten-1 sort_choice" id="filter_0">All Categories</a></li>
 							@foreach($categories as $c)
-							<li ><a class="blue-text lighten-1 sort_choice" id="filter_{{$c->id}}" href="#">{{$c->name}}</a></li>
+							<li ><a class="blue-text lighten-1 sort_choice" id="filter_{{$c->id}}">{{$c->name}}</a></li>
 							@endforeach	
 						</ul>
 					</div>
