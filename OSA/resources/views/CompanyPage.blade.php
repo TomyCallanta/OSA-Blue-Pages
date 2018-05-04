@@ -64,7 +64,7 @@
 								</div>
 
 								<div class="col s12 m1">
-									<span class="valign-wrapper supplier-rate round-corners blue lighten-1 white-text">
+									<span id="dropdown-rate-trigger" class="valign-wrapper supplier-rate round-corners blue lighten-1 white-text dropdown-trigger" data-target ="dropdown-rate">
 										<strong id="supplier_rate">
 										@if($supplier->rating > 0)
 										{{$supplier->rating}}
@@ -74,6 +74,7 @@
 										</strong>
 										<i class="material-icons ">star</i>
 									</span>
+									<!-- DropDown -->
 								</div>
 							</div>
 
@@ -218,6 +219,17 @@
 				</div>
 			</div>
 		</div>
+		<ul class="transparent dropdown-content user-dropdown" id="dropdown-rate">
+			<li class="transparent dropdown-triangle"><span></span></li>
+			<li class="blue">
+			    <div class="user-view">
+			      	<img class="logged_avatar" src="{{\Auth::user()->avatar}}">
+			        <a class="blue" href="#"><span class="white-text">{{\Auth::user()->first_name}} {{\Auth::user()->last_name}}</span></a>
+			        <a class="blue email" href="#"><span class="white-text">{{\Auth::user()->email}}</span></a>
+			    </div>
+			</li>
+			<li class="white"><a class="blue-text lighten-1" href="/logout">Log Out</a></li>
+		</ul>
 
 
 	</main>

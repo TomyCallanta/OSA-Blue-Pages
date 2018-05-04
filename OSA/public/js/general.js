@@ -11,6 +11,11 @@ $(document).ready(function(){
     'coverTrigger': false
   });
 
+  $("#dropdown-rate-trigger").dropdown({
+    'constrainWidth':false,
+    'coverTrigger': false
+  });
+
   $('.sort_choice').click(function(){
      filter = parseInt($(this).attr('id').split('_').pop());
      if(filter == 0){
