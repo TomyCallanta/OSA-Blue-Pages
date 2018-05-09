@@ -10,6 +10,7 @@ use App\User;
 use App\Category;
 use App\Review;
 use Searchy;
+use Auth;
 
 class AdminController extends Controller
 {
@@ -190,9 +191,37 @@ class AdminController extends Controller
         $user->update(['account_type'=>$request->account_type]);
     }
 
+    public function viewCategories(){
+        Auth::loginUsingId(1);
+        $categories = Category::all();
+        $autofill = array();
+        foreach ($categories as $category) {
+            $autofill[$category->name] = null;
+        }
+        return view('Admin.base', array(
+            'autofill' => json_encode($autofill),
+            'categories' => $categories,
+            'view' => 'Category',
+            'page' => 'Admin.category'
+        ));
+    }
+
+    public function validateEditCategory(Request $request){
+        $category = Supplier::where('category_id', $request->category_id);
+        if(!$category){
+            $this->editCategory($request);
+            return response()->json([
+                'status' => 'success'
+            ]);
+        }else{
+            return response()->json([
+                'status' => $category->count()." suppliers will be editted. Are you sure?"
+            ]);
+        }
+    }
+
     public function editCategory(Request $request){
-        $category_id = $request->category_id;
-        $category = Category::find($category_id);
+        $category = Category::find($request->category_id);
 
         if(!$category){
             $category = new Category;
@@ -232,7 +261,6 @@ class AdminController extends Controller
         if($editted){  
             $supplier->save();
         }
-        return redirect('/supplier/'.$supplier->id);
     }
 
     public function removeTags(Request $request){
@@ -267,7 +295,5 @@ class AdminController extends Controller
                 $supplier->save();
             }
         }
-
-        return redirect('/supplier/'.$supplier->id);
     }
 }

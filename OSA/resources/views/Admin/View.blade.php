@@ -40,13 +40,23 @@
     </div>  
   </div>
 
+  <div class="row">
+    <div class="col s12">
+      <div class="btn white">
+        <label>
+          <input type="checkbox" name="" id="checkAll">
+          <span class="checkAll-label"><i class="material-icons">arrow_drop_down</i></span>
+        </label>
+      </div>
+    </div>
+  </div>
+
   <div class="company row">
     <div class="twelve columns">
       <div class="scroll-overflow-x"> 
         <form class="flex" id="action">
           <div class="button flex-space">
-            <input type="checkbox" id="checkAll">
-            <img src="{{asset('img/ic_arrow_drop_down_black_18px.svg')}}">
+            
           </div>
           @if (!empty($button1))
             <a class="flex-space button">{{$button1}}</a>
@@ -57,7 +67,6 @@
       <div class="scroll-overflow-x">
         <table id="suppliers" class="admin-table twelve columns">
           <tr>
-            <th></th>
             <th>Company Name</th>
             <th>Service Type</th>
             <th>Contact Number</th>
@@ -66,8 +75,13 @@
           @if(count($suppliers) > 0)
             @foreach($suppliers as $supplier)
             <tr id="{{$supplier->id}}">
-              <td><input type="checkbox" value="{{$supplier->id}}"></td>
-              <td>{{$supplier->company_name}}</td>
+              <td>
+                <label class="black-text">
+                  
+                  <input type="checkbox" value="{{$supplier->id}}">
+                  <span>{{$supplier->company_name}}</span>
+                </label>
+              </td>
               <td>{{$categories[$supplier->category_id - 1]->name}}</td>
               <td>{{$supplier->contact_no}}</td>
               <input type="hidden" value="{{$supplier->id}}">

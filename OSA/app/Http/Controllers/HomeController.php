@@ -90,26 +90,29 @@ class HomeController extends Controller
     }
 
     public function rate(Request $request){
-        $rating = DB::table('rating')
-                    ->where('supplier_id', $request->supplier_id)
-                    ->where('user_id', $request->user_id);
-        if(!$rating->first()){
-            $rating = new Rating;
-            $rating->user_id = $request->user_id;
-            $rating->supplier_id = $request->supplier_id;
-            $rating->rating = $request->rating;
-            $rating->save();
-        }else{
-            $rating->update(['rating' => $request->rating]);
+        $user = Auth::user();
+        if($user){
+            $rating = DB::table('rating')
+                        ->where('supplier_id', $request->supplier_id)
+                        ->where('user_id', $user->id);
+            if(!$rating->first()){
+                $rating = new Rating;
+                $rating->user_id = $user->id;
+                $rating->supplier_id = $request->supplier_id;
+                $rating->rating = $request->rating;
+                $rating->save();
+            }else{
+                $rating->update(['rating' => $request->rating]);
+            }
+
+            $supplier = Supplier::find($request->supplier_id);
+            $supplier->rating = Rating::where('supplier_id', $supplier->id)->avg('rating');
+            $supplier->save();
+
+            return response()->json([
+                'rating' => $supplier->rating
+            ]);
         }
-
-        $supplier = Supplier::find($request->supplier_id);
-        $supplier->rating = Rating::where('supplier_id', $supplier->id)->avg('rating');
-        $supplier->save();
-
-        return response()->json([
-            'rating' => $supplier->rating
-        ]);
     }
 
     public function mustLogin(Request $request){

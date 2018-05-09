@@ -64,7 +64,8 @@
 								</div>
 
 								<div class="col s12 m1">
-									<span id="dropdown-rate-trigger" class="valign-wrapper supplier-rate round-corners blue lighten-1 white-text dropdown-trigger" data-target ="dropdown-rate">
+									@if(!Auth::check())
+									<span id="dropdown-rate-trigger" class="valign-wrapper supplier-rate round-corners dropdown-trigger {{$supplier->rating > 0 ? 'blue lighten-1' : 'grey'}}  white-text tooltipped" data-position="top" data-tooltip="{{$ratingCount}} review{{$ratingCount > 1 || $ratingCount == 0 ? 's' : ''}}" data-target ="dropdown-rate">
 										<strong id="supplier_rate">
 										@if($supplier->rating > 0)
 										{{$supplier->rating}}
@@ -75,6 +76,27 @@
 										<i class="material-icons ">star</i>
 									</span>
 									<!-- DropDown -->
+									<ul class="transparent dropdown-content user-dropdown" id="dropdown-rate">
+										<li class="white lighten-1 round-corners just-rate">
+											<form id="just_rate">
+											    @for($i = 1; $i <= 5; $i++)
+												<i id="hover_{{$i}}" class="blue-text lighten-1 hoverRate material-icons">star_border</i>
+												@endfor
+											</form>
+										</li>
+									</ul>
+									@else
+									<a class="modal-trigger valign-wrapper supplier-rate round-corners {{$supplier->rating > 0 ? 'blue lighten-1' : 'grey'}} white-text tooltipped" href="#login-modal"  data-position="top" data-tooltip="{{$ratingCount}} review{{$ratingCount > 1 || $ratingCount == 0 ? 's' : ''}}">
+										<strong id="supplier_rate">
+										@if($supplier->rating > 0)
+										{{$supplier->rating}}
+										@else
+										-
+										@endif
+										</strong>
+										<i class="material-icons ">star</i>
+									</a>
+									@endif
 								</div>
 							</div>
 
@@ -219,17 +241,6 @@
 				</div>
 			</div>
 		</div>
-		<ul class="transparent dropdown-content user-dropdown" id="dropdown-rate">
-			<li class="transparent dropdown-triangle"><span></span></li>
-			<li class="blue">
-			    <div class="user-view">
-			      	<img class="logged_avatar" src="{{\Auth::user()->avatar}}">
-			        <a class="blue" href="#"><span class="white-text">{{\Auth::user()->first_name}} {{\Auth::user()->last_name}}</span></a>
-			        <a class="blue email" href="#"><span class="white-text">{{\Auth::user()->email}}</span></a>
-			    </div>
-			</li>
-			<li class="white"><a class="blue-text lighten-1" href="/logout">Log Out</a></li>
-		</ul>
 
 
 	</main>

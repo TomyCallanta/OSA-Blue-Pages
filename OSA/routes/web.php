@@ -50,7 +50,7 @@ Route::post('/admin/new-admin', 'AdminController@newAdmin')->middleware('role:Ad
 Route::post('/admin/addTags', 'AdminController@addTags')->middleware('role:Admin');
 
 Route::post('/admin/removeTags', 'AdminController@removeTags')->middleware('role:Admin');
-
+Route::get('/admin/categories', 'AdminController@viewCategories');
 // Google
 Route::get('/redirect/{provider}', 'Auth\AuthController@redirect');
 
