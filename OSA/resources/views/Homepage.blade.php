@@ -54,8 +54,8 @@
 
 			        <div class="divider"></div>
 			        <div class="full-width supplier-value">
-			        	<span><i class="blue-text material-icons tooltipped" data-position="top" data-tooltip="OSA Verified">verified_user</i></span>
-				        <span class="right valign-wrapper blue-text lighten-3">
+			        	<span><i class="blue-text lighten-1 material-icons tooltipped" data-position="top" data-tooltip="OSA Verified">verified_user</i></span>
+				        <span class="right valign-wrapper {{$supplier->rating > 0 ? 'blue-text lighten-1' : 'grey-text'}}">
 				        	@if($supplier->rating > 0)
 				        	{{$supplier->rating}}
 				        	@else

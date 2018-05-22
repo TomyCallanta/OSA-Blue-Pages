@@ -20,6 +20,8 @@ Route::get('/moreReviews/{id}', 'SupplierController@moreReviews');
 
 Route::get('/', array('as'=>'search', 'uses' => 'HomeController@index'));
 
+Route::post('/rate', 'HomeController@rate')->middleware('auth');
+
 Route::post('/comment','HomeController@comment')->middleware('auth');
 
 Route::get('/suggestion', 'FormsController@suggestionPage')->middleware('role:User');
@@ -33,7 +35,7 @@ Route::get('/Admin/Get/{id}', 'AdminController@view')->middleware('role:Admin');
 
 Route::get('/Reviews/{id}/{page}', 'ReviewsController@view');
 
-Route::put('/dmin/Edit/{id}', 'AdminController@edit')->middleware('role:Admin');
+Route::put('/Admin/Edit/{id}', 'AdminController@edit')->middleware('role:Admin');
 
 Route::put('/Admin/Change/{status}', 'AdminController@change')->middleware('role:Admin');
 
@@ -43,6 +45,12 @@ Route::get('/admin/add', 'AdminController@add')->middleware('role:Admin');
 
 Route::post('/Admin/Add', 'FormsController@newSupplier')->middleware('role:Admin');
 
+Route::post('/admin/new-admin', 'AdminController@newAdmin')->middleware('role:Admin');
+
+Route::post('/admin/addTags', 'AdminController@addTags')->middleware('role:Admin');
+
+Route::post('/admin/removeTags', 'AdminController@removeTags')->middleware('role:Admin');
+Route::get('/admin/categories', 'AdminController@viewCategories');
 // Google
 Route::get('/redirect/{provider}', 'Auth\AuthController@redirect');
 

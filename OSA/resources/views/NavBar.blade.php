@@ -2,16 +2,20 @@
   <nav class="black">
     <div class="nav-wrapper">
     <div class="container">
-      
+
       <a href="#" data-target="slide-out" class="sidenav-trigger"><i class="material-icons">menu</i></a>
 
       <a href="/" class="brand-logo">Blue Pages</a>
 
       @if(\Auth::check())
       <ul id="nav-mobile" class="right hide-on-med-and-down valign-wrapper">
-        <li><a class="btn blue lighten-1" href="{{\Auth::check() && \Auth::user()->account_type == 'Admin' ? '/admin/view/Suggestion' : '/suggestion'}}">Suggest</a></li>
+        @if(\Auth::user()->account_type == 'User')
+        <li><a class="btn blue lighten-1" href="/suggestion">Suggest</a></li>
+        @elseif(\Auth::user()->account_type="Admin")
+        <li><a class="btn blue lighten-1" href="/admin/view/Suggestion">Admin View</a></li>
+        @endif
         <li>
-          <a id="user_dropdown" class="dropdown-trigger valign-wrapper" href="#" data-target="user_options">
+          <a id="user_dropdown" class="valign-wrapper" href="#" data-target="user_options">
             <img class="logged_avatar" src="{{\Auth::user()->avatar}}">
           </a>
         </li>
@@ -52,16 +56,19 @@
         <a href="#"><span class="white-text email">{{\Auth::user()->email}}</span></a>
       </div>
     </li>
+
+      @if(\Auth::user()->account_type == 'User')
+      <li><a class="btn blue lighten-1" href="/suggestion">Suggest</a></li>
+      @elseif(\Auth::user()->account_type="Admin")
+      <li><a class="btn blue lighten-1" href="/admin/view/Suggestion">Admin View</a></li>
+      @endif
+
+    <li><a href="/logout" class="collection-item">Log Out</a></li>
     @else
     <a href="/" class="brand-logo center"><h4>Blue Pages</h4></a>
-    @endif
 
-    <li><a href="{{\Auth::check() && \Auth::user()->account_type == 'Admin' ? '/admin/view/Suggestion' : '/suggestion'}}" class="btn blue lighten-1 collection-item">Suggest</a></li>
-    @if(!\Auth::check())
     <li><a class="modal-trigger" href="#login-modal">Log In</a></li>
     <li><a class="modal-trigger" href="#login-modal">Sign In</a></li>
-    @else
-    <li><a href="/logout" class="collection-item">Log Out</a></li>
     @endif
   </ul>
 

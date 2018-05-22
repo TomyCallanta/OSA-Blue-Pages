@@ -1,7 +1,7 @@
 <?php
 namespace App\Http\Controllers\Auth;
 
-
+use Illuminate\Support\Facades\DB;
 use App\User;
 use Validator;
 use App\Http\Controllers\Controller;
@@ -52,11 +52,21 @@ class AuthController extends Controller
         $user;
 
         if($provider == "google"){
-            $user = User::where('google_id', $socialite_id)->first();
+            $user = DB::table('user')->where('google_id', $socialite_id)->first();
 
-            // register (if user is not registered && using an obf account)
+            // register if never logged in before
             if (!$user) {
-                if($socialite_user->user['domain'] == "obf.ateneo.edu"){
+                $domain = explode("@", $socialite_user->email)[1];
+                $user = DB::table('user')->where('email', $socialite_user->email)->where('account_type', 'Admin');
+                if($user->first()){
+                    $user->update([
+                        'first_name' => $socialite_user['name']['givenName'],
+                        'last_name' => $socialite_user['name']['familyName'],
+                        'avatar' =>$socialite_user->avatar_original,
+                        'google_id' => $socialite_id
+                    ]);
+                    $user = $user->first();
+                }else if($domain == "obf.ateneo.edu"){
                     $user = new User;
                     $user->first_name = $socialite_user->user['name']['givenName'];
                     $user->last_name = $socialite_user->user['name']['familyName'];
@@ -66,7 +76,7 @@ class AuthController extends Controller
                     $user->account_type = "User";
                     $user->save();
                 }else{
-                    redirect('/must-log-in');
+                    return redirect('/must-log-in');
                 }
             }
         }

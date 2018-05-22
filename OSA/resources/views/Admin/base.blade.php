@@ -6,18 +6,19 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
         <title>[Admin] OSA Blue Pages - {{$view}}</title>
+        <!-- Import JQuery -->
+        <script type="text/javascript" src="{{asset('js/jquery-3.3.1.min.js')}}"></script>
 
+        <!-- Scripts -->
+        <script type="text/javascript" src="{{asset('js/materialize.min.js')}}"></script>
+        <script type="text/javascript" src="{{asset('js/admin-jquery.js')}}"></script>
+        <script type="text/javascript" src="{{asset('js/general.js')}}"></script>
         <!-- Fonts -->
         <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
         <!-- Styles -->
         <link rel="stylesheet" type="text/css" href="{{asset('css/materialize.min.css')}}">
         <link rel="stylesheet" type="text/css" href="{{asset('css/general.css')}}">
         <link rel="stylesheet" type="text/css" href="{{asset('css/general_admin.css')}}">
-        <!-- Scripts -->
-        <script src="{{asset('js/jquery-3.3.1.min.js')}}"></script>
-        <script src="{{asset('js/materialize.min.js')}}"></script>
-        <script src="{{asset('js/admin-jquery.js')}}"></script>
-        <script src="{{asset('js/general.js')}}"></script>
         <!-- Icon -->
         <link rel="icon" type="image/png" href="{{asset('img/BT-LogoIcon.png')}}">
     </head>
@@ -29,14 +30,14 @@
                     <a href="#" data-target="mobile-sv" class="sidenav-trigger"><i class="material-icons">menu</i></a>
 
                     <ul class="right hide-on-med-and-down valign-wrapper">
-                        <li class="black-text" style="cursor:default">align</li>
+                        <li><a class="btn blue lighten-1" href="/">User View</a></li>
                         <li>
-                            <a id="user_dropdown" class="dropdown-trigger valign-wrapper" href="#" data-target="user_options">
+                            <a id="user_dropdown" class="valign-wrapper" href="#" data-target="user_options">
                                 <img class="logged_avatar" src="{{\Auth::user()->avatar}}">
                             </a>
                         </li>
                     </ul>
-               </div> 
+               </div>
             </nav>
         </div>
         <ul class="transparent dropdown-content user-dropdown" id="user_options">
@@ -66,12 +67,21 @@
             <li style="height:64px" class="hide-on-med-and-down valign-wrapper black"><a class="white-text brand-logo" href="/admin/view/Suggestion"> <h4 class="admin-logo">OSA Blue Pages</h4></a></li>
 
             <li><a class="btn blue lighten-1" href="/admin/add">Add Supplier</a></li>
-            <li><a class="{{$view == 'Suggestion' ? 'blue-text lighten-1' : ''}}" href="/admin/view/Suggestion">Suggested</a></li>
-            <li><a class="{{$view == 'Accepted' ? 'blue-text lighten-1' : ''}}" href="/admin/view/Accepted">Accepted</a></li>
-            <li><a class="{{$view == 'Rejected' ? 'blue-text lighten-1' : ''}}" href="/admin/view/Rejected">Rejected</a></li>
+
+            <li><div class="divider"></div></li>
+            <li><a class="subheader">Settings</a></li>
+            <li><a href ="/EditAdmin" style = "font-size:15px;">Edit Admin Access</a></li>
+            <li><a href = "/CategorySettings" style = "font-size:15px;">Add Categories</a></li>
+
+            <li><div class="divider"></div></li>
+            <li><a class="subheader">Admin Pages</a></li>
+            <li><a class="{{$view == 'Suggestion' ? 'blue-text lighten-1' : ''}}" href="/admin/view/Suggestion">Suggestion Entries</a></li>
+            <li><a class="{{$view == 'Accepted' ? 'blue-text lighten-1' : ''}}" href="/admin/view/Accepted">Accepted Entries</a></li>
+            <li><a class="{{$view == 'Rejected' ? 'blue-text lighten-1' : ''}}" href="/admin/view/Rejected">Rejected Entries</a></li>
+
         </ul>
 
-        <main class="admin-main">            
+        <main class="admin-main">
             <div class="container">
                 @include($page)
             </div>

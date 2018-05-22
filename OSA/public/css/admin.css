@@ -21,7 +21,7 @@
 
 .admin-table tr:first-child:hover{
   cursor:auto;
-  background-color: transparent; 
+  background-color: transparent;
 }
 
 .admin-table tr:hover{
@@ -57,7 +57,7 @@
 p.review{
   overflow:auto;
   text-overflow: clip;
-  white-space: normal 
+  white-space: normal
 }
 
 @media (min-width: 550px){
@@ -184,7 +184,7 @@ p.review{
 .modal-head h1, .modal-head p{
   margin-bottom: 15px;
 }
-
+/* 
 .modal-content{
   position:absolute;
   top:170px;
@@ -192,7 +192,7 @@ p.review{
   left:20px;
   right:20px;
   overflow-y:auto;
-}
+} */
 
 .modal-content-alert {
     background-color: #fefefe;
@@ -271,4 +271,122 @@ p.review{
   border-style: solid;
   border-width: 0 0 1px 0;
   border-color: #7f7f7f;
+}
+
+/* New Portion */
+.title-site{
+  margin-left: 55px;
+}
+@media only screen and (min-width:993px) {
+  .container{
+    width: 90% !important;
+    margin-top: 25px; !important;
+  }
+}
+
+.size-Search{
+  max-height: 100px;
+  min-width: 700px;
+}
+
+.main-table{
+  margin-left: 25px;
+  margin-right: 25px;
+  margin-top: 25px;
+  overflow: auto;
+
+}
+
+.space-title{
+  padding-left: 10px;
+}
+
+.size-modal{
+  max-width: 600px;
+}
+
+.side-space{
+  margin-left: 10px;
+  margin-right: 10px;
+}
+
+.prompt {
+  position: relative;
+  font-weight: normal;
+  font-style: normal;
+  display: -webkit-inline-box;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  color: rgba(0, 0, 0, 0.87);
+}
+
+.searchTerm {
+  float: left;
+  width: 100%;
+  border: 3px solid #00B4CC;
+  padding: 5px;
+  height: 20px;
+  border-radius: 5px;
+  outline: none;
+  color: #9DBFAF;
+}
+
+.search-container{
+float: right;
+padding: 6px 10px;
+margin-top: 8px;
+margin-right: 16px;
+background: #ddd;
+font-size: 17px;
+border: none;
+cursor: pointer;
+}
+
+.buttons-suggest{
+
+}
+
+.above-pad{
+  margin-top: 50px;
+}
+
+.input-spacing{
+  margin: 1em;
+}
+
+.reject-top{
+  height:25%;
+  position: relative;
+  -webkit-transition: -webkit-box-shadow .25s;
+  transition: -webkit-box-shadow .25s;
+  transition: box-shadow .25s;
+  transition: box-shadow .25s, -webkit-box-shadow .25s;
+}
+
+.reject-bottom{
+  height:80%;
+  position: relative;
+  -webkit-transition: -webkit-box-shadow .25s;
+  transition: -webkit-box-shadow .25s;
+  transition: box-shadow .25s;
+  transition: box-shadow .25s, -webkit-box-shadow .25s;
+}
+
+.warningtop{
+  text-align: center;
+  padding-top: 20px;
+  padding-bottom: 15px;
+}
+
+.warning-pic{
+  font-size: 55px;
+  color: #ff1744;
+}
+
+.top-title{
+  height:50%;
+  -webkit-transition: -webkit-box-shadow .25s;
+  transition: -webkit-box-shadow .25s;
+  transition: box-shadow .25s;
+  transition: box-shadow .25s, -webkit-box-shadow .25s;
 }
