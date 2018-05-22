@@ -52,10 +52,11 @@ class SupplierController extends Controller
                     ->where('id', '!=', $supplier->id)
                     ->limit(3)
                     ->get();
-
+        $ratingCount = Rating::where('supplier_id', $supplier->id)
+                        ->count();
 
         $categoriesList = Category::all();
-    	return view('CompanyPage', array('supplier' => $supplier, 'categories' => $categoriesList, 'category' => $category, 'reviews' => $reviews, 'users' => $users, 'related' => $related));
+    	return view('CompanyPage', array('supplier' => $supplier, 'categories' => $categoriesList, 'category' => $category, 'reviews' => $reviews, 'users' => $users, 'related' => $related, 'ratingCount' => $ratingCount));
     }
 
     public function moreReviews($id){

@@ -11,8 +11,15 @@ $(document).ready(function(){
     'coverTrigger': false
   });
 
+  $("#dropdown-rate-trigger").dropdown({
+    'constrainWidth':false
+  });
+
   $('.sort_choice').click(function(){
      filter = parseInt($(this).attr('id').split('_').pop());
+     if(filter == 0){
+      filter="";
+     }
      $("input[name='sort']").val(filter);
      $('#sort_button').html($(this).html() + "<i class='right material-icons'>arrow_drop_down</i>");
   });
@@ -36,7 +43,7 @@ $(document).ready(function(){
 
         $("#no_comments").remove();
 
-        $("#supplier_rate").html(parseInt(data.newRate).toString());
+        $("#supplier_rate").html(data.newRate.toString());
 
         $("#comment-container").after(
           "<div class='ui comments'><div class='comment'><a class='avatar'><img src='"
@@ -119,6 +126,46 @@ $(document).ready(function(){
         }
     });
 
-   $('.modal').modal();
+    $('.hoverRate').hover(
+    function(){
+      var cur = parseInt($(this).attr('id').split("_").pop());
+      for(i = 1; i <= 5; i++){
+          if(i <= cur){
+            $('#hover_' + i).html('star');
+          }else{
+            $('#hover_' + i).html('star_border');
+          }
+        }
+    },
+    function(){
+      for(i = 1; i <= 5; i++){
+          $('#hover_' + i).html('star_border');
+        }
+    });
 
+    $('.hoverRate').click(function(){
+      $.ajaxSetup({
+          headers: {
+              'X-CSRF-TOKEN': $('meta[name="_token"]').attr('content')
+          }
+      })
+
+      formdata = {
+        'supplier_id' : $('#supplier_id').val(),
+        'rating':  parseInt($(this).attr('id').split("_").pop())
+      }
+
+      $.post('/rate', formdata, function(data){
+        $("#supplier_rate").html(data.rating.toString());
+      }).fail(function(e){
+        alert(e.responseText);
+      });
+    });
+
+
+    $('#categories').on('click','tbody tr', function (evt) {
+      var cell= $(evt.target).closest('td');
+      $("#toBeEditted").val(cell.html());
+      $("input[name='category_id']").val(cell.attr('id').split('_').pop());
+    });
 });

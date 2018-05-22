@@ -64,7 +64,8 @@
 								</div>
 
 								<div class="col s12 m1">
-									<span class="valign-wrapper supplier-rate round-corners blue lighten-1 white-text">
+									@if(!Auth::check())
+									<span id="dropdown-rate-trigger" class="valign-wrapper supplier-rate round-corners dropdown-trigger {{$supplier->rating > 0 ? 'blue lighten-1' : 'grey'}}  white-text tooltipped" data-position="top" data-tooltip="{{$ratingCount}} review{{$ratingCount > 1 || $ratingCount == 0 ? 's' : ''}}" data-target ="dropdown-rate">
 										<strong id="supplier_rate">
 										@if($supplier->rating > 0)
 										{{$supplier->rating}}
@@ -74,6 +75,28 @@
 										</strong>
 										<i class="material-icons ">star</i>
 									</span>
+									<!-- DropDown -->
+									<ul class="transparent dropdown-content user-dropdown" id="dropdown-rate">
+										<li class="white lighten-1 round-corners just-rate">
+											<form id="just_rate">
+											    @for($i = 1; $i <= 5; $i++)
+												<i id="hover_{{$i}}" class="blue-text lighten-1 hoverRate material-icons">star_border</i>
+												@endfor
+											</form>
+										</li>
+									</ul>
+									@else
+									<a class="modal-trigger valign-wrapper supplier-rate round-corners {{$supplier->rating > 0 ? 'blue lighten-1' : 'grey'}} white-text tooltipped" href="#login-modal"  data-position="top" data-tooltip="{{$ratingCount}} review{{$ratingCount > 1 || $ratingCount == 0 ? 's' : ''}}">
+										<strong id="supplier_rate">
+										@if($supplier->rating > 0)
+										{{$supplier->rating}}
+										@else
+										-
+										@endif
+										</strong>
+										<i class="material-icons ">star</i>
+									</a>
+									@endif
 								</div>
 							</div>
 
@@ -158,7 +181,7 @@
 														@endfor
 													</div>
 													<div>
-														<textarea class="materialize-textarea" id="comment-field" placeholder="What's on your mind?" type="text" name="review_content"></textarea>
+														<textarea class="materialize-textarea" id="comment-field" placeholder="Tell us about {{$supplier->company_name}}" type="text" name="review_content"></textarea>
 														<div id="comment-buttons" class = "comment-button">
 															@if(Auth::check())
 															<a id="cancel-comment" style= "padding-right:20px;" class="black-text">CANCEL</a>

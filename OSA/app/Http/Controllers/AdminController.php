@@ -10,6 +10,7 @@ use App\User;
 use App\Category;
 use App\Review;
 use Searchy;
+use Auth;
 
 class AdminController extends Controller
 {
@@ -159,18 +160,140 @@ class AdminController extends Controller
     }
 
     public function newAdmin(Request $request){
+        //see if an admin with same email already has an account
+        $admin = User::where('email', $request->email);
+            
+        if(!$admin->first()){
+            $admin = new User;
+            $admin->account_type = 'Admin';
+            $admin->email = $request->email;
+            $admin->save();
 
+            return response()->json([
+                'status' => 'Success'
+            ]);
+        }else{
+            $admin->where('account_type', 'User');
+            if($admin->first()){
+                return response()->json([
+                    'status' => 'owner of email, '.$request->email.", is already a user"
+                ]);
+            }else{
+                return response()->json([
+                    'status' => 'owner of email, '.$request->email.", is already an admin"
+                ]);
+            }
+        }
+    }
+
+    public function editAccountType(Request $request){
+        $user = DB::table('user')->where('email', $request->email);
+        $user->update(['account_type'=>$request->account_type]);
+    }
+
+    public function viewCategories(){
+        Auth::loginUsingId(1);
+        $categories = Category::all();
+        $autofill = array();
+        foreach ($categories as $category) {
+            $autofill[$category->name] = null;
+        }
+        return view('Admin.base', array(
+            'autofill' => json_encode($autofill),
+            'categories' => $categories,
+            'view' => 'Category',
+            'page' => 'Admin.category'
+        ));
+    }
+
+    public function validateEditCategory(Request $request){
+        $category = Supplier::where('category_id', $request->category_id);
+        if(!$category){
+            $this->editCategory($request);
+            return response()->json([
+                'status' => 'success'
+            ]);
+        }else{
+            return response()->json([
+                'status' => $category->count()." suppliers will be editted. Are you sure?"
+            ]);
+        }
     }
 
     public function editCategory(Request $request){
-        $category_id = $request->category_id;
-        $category = Category::find($category_id);
+        $category = Category::find($request->category_id);
 
         if(!$category){
             $category = new Category;
         }
 
         $category->name = $request->name;
-        $category->save;
+        $category->save();
+    }
+
+    public function addTags(Request $request){
+        $supplier = Supplier::find($request->supplier_id);
+        $editted = false;
+        if($supplier->tags){
+            $tags = explode("|", $supplier->tags);
+
+            foreach($request->tags as $tag){             
+                if(!in_array($tag, $tags)){
+                    $supplier->tags = $supplier->tags."|".$tag;
+                    $tags[] = $tag;
+                    $editted = true;
+                }
+            }
+        }else{
+            $editted = true;
+            $tags = array();
+
+            $supplier->tags = $request->tags[0];
+            $tags[] = $request->tags[0];
+            for($i = 1; $i < count($request->tags); $i++){             
+                if(!in_array($request->tags[$i], $tags)){
+                    $supplier->tags = $supplier->tags."|".$request->tags[$i];
+                    $tags[] = $request->tags[$i];
+                }
+            }
+        }
+
+        if($editted){  
+            $supplier->save();
+        }
+    }
+
+    public function removeTags(Request $request){
+        $supplier = Supplier::find($request->supplier_id);
+
+        if($supplier->tags){
+            $tags = explode("|", $supplier->tags);
+            $newTags;
+
+            $editted = false;
+            $firstAdd = false;
+
+            foreach($tags as $tag){
+                if(!in_array($tag, $request->tags)){
+                    if($firstAdd){                     
+                        $newTags = $newTags."|".$tag;
+                    }else{
+                        $newTags = $tag;
+                        $firstAdd = true;
+                    }
+                }else{
+                    $editted = true;
+                }
+            }
+
+            if($editted){
+                if($firstAdd){
+                    $supplier->tags = $newTags;
+                }else{
+                    $supplier->tags = null;
+                }
+                $supplier->save();
+            }
+        }
     }
 }

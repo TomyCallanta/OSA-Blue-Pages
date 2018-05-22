@@ -22,7 +22,6 @@ $(document).ready(function(){
 		var viewURL = "/Get/";
 	 
 	    if( cell.index() > 0){
-	    	console.log(url + viewURL + supplier_id);
 	    	$.get(url + viewURL + supplier_id, function (data) {
 	            //success data
 	            field[0].siblings("input[type='hidden']").val(data.company_name);
@@ -219,11 +218,13 @@ $(document).ready(function(){
 	}
 
 	$("#checkAll").click(function(){
-	    $("input[type='checkbox']").not(this).prop('checked', this.checked);
+	    $("input[type='checkbox']").not($(this)).each(function(){
+	    	$(this).prop('checked', $("#checkAll").prop('checked'));
+	    });
 	});
 
 	$("input[type='checkbox']").change(function(){
-		var table = $(this).parents().eq(2);
+		var table = $('#suppliers');
 		var numAll = table.find("input[type='checkbox']").length;
 		var numChecked = table.find("input[type='checkbox']:checked").length;
 		if(numAll == numChecked){
