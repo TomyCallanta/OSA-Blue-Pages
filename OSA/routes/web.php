@@ -28,7 +28,6 @@ Route::get('/suggestion', 'FormsController@suggestionPage')->middleware('role:Us
 
 Route::post('/suggestion', array ('uses'=>'FormsController@newSuggestion'))->middleware('role:User');
 
-
 Route::get('/admin/view/{view}', 'AdminController@index')->middleware('role:Admin');
 
 Route::get('/Admin/Get/{id}', 'AdminController@view')->middleware('role:Admin');
@@ -67,3 +66,6 @@ Route::post('/login', 'Auth\LoginController@login');
 Route::post('logout', 'Auth\LoginController@logout')->name('logout');
 
 Route::get('logout', 'Auth\LoginController@logout');
+
+// Admin side
+Route::get('/admin/EditAdmin', 'AdminController@viewAdmin');

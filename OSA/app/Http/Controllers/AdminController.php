@@ -14,7 +14,7 @@ use Auth;
 
 class AdminController extends Controller
 {
-    public function index($view, Request $request){
+    public function index($view, Request $request){ // what you are requesting
     	$search = $request->input('search');
         $category = $request->input('sort');
         if($category == "All"){
@@ -51,6 +51,7 @@ class AdminController extends Controller
             'page' => 'Admin.View'
         ]);
     }
+
     /*
     *Sends complete supplier info to modal as json
     *
@@ -75,6 +76,9 @@ class AdminController extends Controller
                 'contact_person' => $supplier->contact_person,
                 'website' => $supplier->website,
                 'fbpage' => $supplier->fbpage,
+                'verified' => $supplier ->verified,
+                'tags' => $supplier ->tags,
+
                 'num_reviews' => count($reviews),
 
                 'suggestor' => $name,
@@ -91,6 +95,8 @@ class AdminController extends Controller
                 'contact_person' => $supplier->contact_person,
                 'website' => $supplier->website,
                 'fbpage' => $supplier->fbpage,
+                'verified' => $supplier ->verified,
+                'tags' => $supplier ->tags,
                 'num_reviews' => count($reviews)
             ]);
         }
@@ -261,6 +267,16 @@ class AdminController extends Controller
         if($editted){
             $supplier->save();
         }
+    }
+
+    public function viewAdmin(Request $request){
+      $user = User::where('account_type', 'Admin')
+                ->simplePaginate(12);
+      return view('Admin.base', [
+        'admins' => $user, // that is the name of the user (array of it )
+        'page' => 'Admin.EditAdmin',
+        'view' => 'Edit Admin'
+      ]);
     }
 
     public function removeTags(Request $request){

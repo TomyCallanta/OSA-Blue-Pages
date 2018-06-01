@@ -7,28 +7,30 @@
 							<h5>{{$view}} Entries</h5>
 						</div>
 					</div>
-					<div class = "row">
-						<div class = "input-field col s12 l6">
-              <select>
-                @foreach($categories as $category)
-									@if ($category->id == $current)
-			              <option value="{{$category->id}}" selected>{{$category->name}}</option>
-			            @else
-			              <option value="{{$category->id}}">{{$category->name}}</option>
-			            @endif
-              	@endforeach
-              </select>
-              <label>Category Filter</label>
-            </div>
-					</div>
-					<div class ="row">
-						<div class="col s12 m9 l10">
-							<input placeholder="What are you looking for?" class="white round-corners" type="text" name="search" value="{{!empty($search) ? $search : ''}}">
+					<form>
+						<div class = "row">
+							<div class = "input-field col s12 l6">
+		              <select name = "sort">
+		                @foreach($categories as $category)
+											@if ($category->id == $current)
+					              <option value="{{$category->id}}" selected>{{$category->name}}</option>
+					            @else
+					              <option value="{{$category->id}}">{{$category->name}}</option>
+					            @endif
+		              	@endforeach
+		              </select>
+								<label>Category Filter</label>
+	            </div>
 						</div>
-						<div class="col s12 m3 l2">
-							<button class="col s12 btn blue lighten-1" type="submit">SEARCH</button>
+						<div class ="row">
+							<div class="col s12 m9 l10">
+								<input placeholder="What are you looking for?" class="white round-corners" type="text" name="search" value="{{!empty($search) ? $search : ''}}">
+							</div>
+							<div class="col s12 m3 l2">
+								<button class="col s12 btn blue lighten-1" type="submit">SEARCH</button>
+							</div>
 						</div>
-					</div>
+				</form>
 			</div>
 		</div>
 	</div>
@@ -47,7 +49,7 @@
 							<a class="waves-effect waves-light btn-small red accent-3 modal-trigger" data-target="reject-modal">REJECT</a>
 						@endif
 						@if($view == 'Suggestion' || $view == 'Rejected')
-							<a class="waves-effect waves-light btn-small">ACCEPT</a>
+							<a class="waves-effect waves-light btn-small blue lighten-1">ACCEPT</a>
 						@endif
 					</div>
 				</div>
@@ -87,7 +89,7 @@
 							</td>
 							<td>{{$categories[$supplier->category_id - 1]->name}}</td>
 							<input type ="hidden" value ="{{$supplier->id}}">
-							<td><a class ="waves-effect waves-light btn-small"><i class="material-icons modal-trigger" data-target="edit-modal">edit</i></a></td>
+							<td><a class ="edit waves-effect waves-light btn-small blue lighten-1"><i class="material-icons modal-trigger" data-target="edit-modal">edit</i></a></td>
 						</tr>
 						@endforeach
 						@else

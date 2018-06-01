@@ -108,7 +108,7 @@
 									<h6><strong>Contact Person</strong></h6>
 									<p class ="info-space">{{$supplier->contact_person}}</p>
 									@endif
-									
+
 									@if(!empty($supplier->contact_no))
 									<h6><strong>Contact Number(s)</strong></h6>
 									<p class ="info-space">{{$supplier->contact_no}}</p>
@@ -185,7 +185,7 @@
 														<div id="comment-buttons" class = "comment-button">
 															@if(Auth::check())
 															<a id="cancel-comment" style= "padding-right:20px;" class="black-text">CANCEL</a>
-															<a id="submit-comment" class="blue lighten-1 btn" type="submit" name="action">Comment</a >
+															<a id="submit-comment" class=" waves-effect waves-light btn blue lighten-1" type="submit" name="action">Comment</a >
 															@endif
 														</div>
 

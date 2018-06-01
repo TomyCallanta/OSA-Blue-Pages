@@ -24,7 +24,6 @@
       <ul id="nav-mobile" class="right hide-on-med-and-down">
         <li><a class="btn blue lighten-1 modal-trigger" href="#login-modal">Suggest</a></li>
         <li><a class="modal-trigger" href="#login-modal">Log In</a></li>
-        <li><a class="modal-trigger" href="#login-modal">Sign In</a></li>
       </ul>
       @endif
     </div>
@@ -43,6 +42,7 @@
       </div>
     </li>
   <li class="white"><a class="blue-text lighten-1" href="/logout">Log Out</a></li>
+  <li class ="white"><a class="blue-text lighten-1" href"/fqa">Frequently Asked Questions</a></li>
 </ul>
 @endif
   <!-- SideNav -->
@@ -64,11 +64,13 @@
       @endif
 
     <li><a href="/logout" class="collection-item">Log Out</a></li>
+    <li><a>Frequently Asked Questions</a></li>
     @else
     <a href="/" class="brand-logo center"><h4>Blue Pages</h4></a>
 
+    <li><a class="btn blue lighten-1 modal-trigger" href="#login-modal">Suggest</a></li>
     <li><a class="modal-trigger" href="#login-modal">Log In</a></li>
-    <li><a class="modal-trigger" href="#login-modal">Sign In</a></li>
+    <li><a href"{{''}}">Frequently Asked Questions</a></li>
     @endif
   </ul>
 

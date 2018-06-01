@@ -79,7 +79,7 @@ p.review{
 
 
 .scroll-overflow-x{
-  overflow-x: auto;
+  overflow-x: auto !important;
 }
 
 .admin-close{
@@ -184,7 +184,7 @@ p.review{
 .modal-head h1, .modal-head p{
   margin-bottom: 15px;
 }
-/* 
+/*
 .modal-content{
   position:absolute;
   top:170px;

@@ -3,7 +3,7 @@
     <div>
       <h4 class = "center">Edit Form</h4>
     </div>
-        <form>
+        <form id ="modal-suggestion">
           <div class= "row">
             <div class = "input-field col s12 l6">
               <input value ="" id="CompanyName" type="text" class="validate">
@@ -31,6 +31,15 @@
               <label>Business Type</label>
             </div>
             <div class = "input-field col s12 l6">
+              <select>
+                <option value="" disabled selected>OSA Verified?</option>
+                    <option value="1">Verified</option>
+                    <option value="2">Not Verified</option>
+              </select>
+            </div>
+          </div>
+          <div class= "row">
+            <div class = "input-field col s12 l12">
               <input value ="" id="Contact Person" type="text" class="validate">
               <label for="Contact Person">Contact Person</label>
             </div>

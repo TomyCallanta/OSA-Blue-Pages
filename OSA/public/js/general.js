@@ -5,17 +5,77 @@ $(document).ready(function(){
   $(".dropdown-trigger").dropdown();
   $('.tooltipped').tooltip();
   $("select").formSelect();
+
   $("#user_dropdown").dropdown({
     'constrainWidth':false,
     'coverTrigger': false
   });
+
   $('.chips').chips({
     placeholder:'Enter a tag',
     secondaryPlaceholder: 'add more tags'
   });
+
   $("#dropdown-rate-trigger").dropdown({
     'constrainWidth':false
   });
+
+  // change the value
+  $('modal-suggestion').find("input[type=text]").each(function(ev)
+  {
+      if(!$(this).val()) {
+     $(this).attr("value", "Type your answer here");
+  }
+  });
+
+
+  $.ajax({
+     type: "POST",
+     contentType: "application/json; charset=utf-8",
+     url: "yoururlhere",
+     data: "{'data1':'" + value1+ "', 'data2':'" + value2+ "', 'data3':'" + value3+ "'}",
+     success: function (result) {
+          //do somthing here
+     }
+});
+  //
+  // when you open the edit button
+  // $('.edit').click(function()){
+  //  var a =
+  //   Row = $(".edit").parent().parent()
+  //   Id = $(".edit").parent().siblings("input[type=‘hidden’]")
+  //   $.get("/admin/view/id", function(data)){
+  //     type: "POST",
+  //     contentType: "application/json; charset=utf-8",
+  //     url: "yoururlhere",
+  //     success: $("#modal-suggestion", function(data){
+  //       $("#modal-suggestion")
+  //       // get company name
+  //       data.company_name
+  //       // get business name
+  //       data.business_name
+  //       // get Address
+  //       data.address
+  //       // get business Type
+  //       data.category_id
+  //       // verified
+  //       data.verified
+  //       //  contact person
+  //       data.contact_person
+  //       // contact Number
+  //       data.contact_no
+  //       // Email
+  //       data.email
+  //       // facebook;
+  //       data.fbpage
+  //       // website
+  //       data.website
+  //       // tags
+  //       data.tags
+  //       })
+  //     )
+  //   }
+  // }
 
   $('.sort_choice').click(function(){
      filter = parseInt($(this).attr('id').split('_').pop());

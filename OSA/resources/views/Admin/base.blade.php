@@ -19,6 +19,7 @@
         <link rel="stylesheet" type="text/css" href="{{asset('css/materialize.min.css')}}">
         <link rel="stylesheet" type="text/css" href="{{asset('css/general.css')}}">
         <link rel="stylesheet" type="text/css" href="{{asset('css/general_admin.css')}}">
+        <link rel="stylesheet" type="text/css" href="{{asset('css/admin.css')}}">
         <!-- Icon -->
         <link rel="icon" type="image/png" href="{{asset('img/BT-LogoIcon.png')}}">
     </head>
@@ -70,8 +71,8 @@
 
             <li><div class="divider"></div></li>
             <li><a class="subheader">Settings</a></li>
-            <li><a href ="/EditAdmin" style = "font-size:15px;">Edit Admin Access</a></li>
-            <li><a href = "/CategorySettings" style = "font-size:15px;">Add Categories</a></li>
+            <li><a class = "{{$view == 'Edit Admin' ? 'blue-text lighten-1' : ''}}" href ="/admin/EditAdmin" style = "font-size:15px;">Edit Admin Access</a></li>
+            <li><a href = "/CategorySettings" style = "font-size:15px;">FAQ</a></li>
 
             <li><div class="divider"></div></li>
             <li><a class="subheader">Admin Pages</a></li>
