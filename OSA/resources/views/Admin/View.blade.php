@@ -89,7 +89,7 @@
 							</td>
 							<td>{{$categories[$supplier->category_id - 1]->name}}</td>
 							<input type ="hidden" value ="{{$supplier->id}}">
-							<td><a class ="edit waves-effect waves-light btn-small blue lighten-1"><i class="material-icons modal-trigger" data-target="edit-modal">edit</i></a></td>
+							<td><a class ="edit waves-effect waves-light btn-small blue lighten-1"><i class="material-icons">edit</i></a></td>
 						</tr>
 						@endforeach
 						@else

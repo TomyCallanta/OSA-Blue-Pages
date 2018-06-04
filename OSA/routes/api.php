@@ -34,8 +34,6 @@ Route::post('/admin/changeTags', 'AdminController@addTags')->middleware('role:Ad
 // Google
 Route::get('/redirect/{provider}', 'Auth\AuthController@redirect');
 
-Route::get('/callback/{provider}', 'Auth\AuthController@handleProviderCallback');
-
 Route::get('/google', function () {
     return view('googleAuth');
 });
