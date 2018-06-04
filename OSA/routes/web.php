@@ -30,35 +30,6 @@ Route::post('/suggestion', array ('uses'=>'FormsController@newSuggestion'))->mid
 
 Route::get('/admin/view/{view}', 'AdminController@index')->middleware('role:Admin');
 
-Route::get('/Admin/Get/{id}', 'AdminController@view')->middleware('role:Admin');
-
-Route::get('/Reviews/{id}/{page}', 'ReviewsController@view');
-
-Route::put('/Admin/Edit/{id}', 'AdminController@edit')->middleware('role:Admin');
-
-Route::put('/Admin/Change/{status}', 'AdminController@change')->middleware('role:Admin');
-
-Route::delete('Admin/Delete', 'AdminController@delete')->middleware('role:Admin');
-
-Route::get('/admin/add', 'AdminController@add')->middleware('role:Admin');
-
-Route::post('/Admin/Add', 'FormsController@newSupplier')->middleware('role:Admin');
-
-Route::post('/admin/new-admin', 'AdminController@newAdmin')->middleware('role:Admin');
-
-Route::post('/admin/addTags', 'AdminController@addTags')->middleware('role:Admin');
-
-Route::post('/admin/removeTags', 'AdminController@removeTags')->middleware('role:Admin');
-Route::get('/admin/categories', 'AdminController@viewCategories');
-// Google
-Route::get('/redirect/{provider}', 'Auth\AuthController@redirect');
-
-Route::get('/callback/{provider}', 'Auth\AuthController@handleProviderCallback');
-
-Route::get('google', function () {
-    return view('googleAuth');
-});
-
 // Authentication Routes
 // Log in Routes...
 Route::get('must-log-in', 'HomeController@mustLogin')->name('login');
@@ -69,3 +40,6 @@ Route::get('logout', 'Auth\LoginController@logout');
 
 // Admin side
 Route::get('/admin/EditAdmin', 'AdminController@viewAdmin');
+
+//google to be moved
+Route::get('/callback/{provider}', 'Auth\AuthController@handleProviderCallback');
