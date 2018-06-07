@@ -29,15 +29,15 @@ $(document).ready(function(){
   });
 
 
-  $.ajax({
-     type: "POST",
-     contentType: "application/json; charset=utf-8",
-     url: "yoururlhere",
-     data: "{'data1':'" + value1+ "', 'data2':'" + value2+ "', 'data3':'" + value3+ "'}",
-     success: function (result) {
-          //do somthing here
-     }
-});
+//   $.ajax({
+//      type: "POST",
+//      contentType: "application/json; charset=utf-8",
+//      url: "yoururlhere",
+//      data: "{'data1':'" + value1+ "', 'data2':'" + value2+ "', 'data3':'" + value3+ "'}",
+//      success: function (result) {
+//           //do somthing here
+//      }
+// });
   //
   // when you open the edit button
   // $('.edit').click(function()){

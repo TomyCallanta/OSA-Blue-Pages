@@ -1,71 +1,38 @@
 $(document).ready(function(){
-	var field = [ 
-		$("input[name='company_name']"),
-	    $("input[name='business_name']"),
-	    $("input[name='address']"),
-	    $("input[name='email']"),
-	    $("input[name='contact_no']"),
-	    $("select[name='category_id']"),
-	    $("input[name='contact_person']"),
-	    $("input[name='website']"),
-	    $("input[name='fbpage']"),
-	    $("textarea[name='note_to_admin']"),
-	    $("#suggestor")
-	];
-	
-	var url = "/Admin"; 
+	var url = "/api/Admin"; 
 
-	$('#suppliers').on('click','tbody tr', function (evt) {
-		var view =  $('table').siblings('input').val();
-	    var cell= $(evt.target).closest('td');
-	    var supplier_id = cell.parent().attr("id");
-		var viewURL = "/Get/";
-	 
-	    if( cell.index() > 0){
-	    	$.get(url + viewURL + supplier_id, function (data) {
-	            //success data
-	            field[0].siblings("input[type='hidden']").val(data.company_name);
-	            field[1].siblings("input[type='hidden']").val(data.business_name);
-	            field[2].siblings("input[type='hidden']").val(data.address);
-	            field[3].siblings("input[type='hidden']").val(data.email);
-	            field[4].siblings("input[type='hidden']").val(data.contact_no);
-	            field[5].siblings("input[type='hidden']").val(data.category_id);
-	            field[6].siblings("input[type='hidden']").val(data.contact_person);
-	            field[7].siblings("input[type='hidden']").val(data.website);
-	            field[8].siblings("input[type='hidden']").val(data.fbpage);
-	            field[9].siblings("input[type='hidden']").val(data.note_to_admin);
-	    		
-	    		$("#details").addClass("current");
-	            $("#reviews_btn").html("Reviews (" + data.num_reviews + ")");
-	            if(data.num_reviews < 1){
-	            	$("#reviews_btn").addClass("disabled");
-	            }else{
-	            	$("#reviews_btn").removeClass("disabled");
-	            }
-	            if($("#reviews_btn").hasClass("current")){
-	            	$("#reviews_btn").removeClass("current");
-	            }
+	$('.edit').click(function(){
+		var supplier_id = $(this).parent().siblings("input[type='hidden']").val();
+		$.get(url + '/Get/' + supplier_id, function(data){
+			for(d in data){
+				var field = $('#' + d);
+				if(d === "tags"){
+					var tags = data[d].split('|');
+					
+					$('#' + d).chips();
 
-	    		if(data.suggestor != null){
-	    			field[10].html("Suggested by " + data.suggestor);
-	    		}else{
-	    			$("#mh").css('height',118);
-	    			$("#mc").css('top',138);
-	    		}
-	    		if (data.note_to_admin == null){
-	    			$('#notes').css('display', 'none')
-	    		}else{
-	    			$('#notes').css('display', 'block')
-	    		}
-
-	    		$("#editID").val(supplier_id);
-
-	    		setValue();
-				$("#supplierInfo").show();
-				$("#review-screen").hide();
-	    		editToggle();
-	        });
-	   }
+					if(tags){					
+						for(t in tags){
+							$('#' + d).chips('addChip', {
+								tag: tags[t]
+							});
+						}
+					}
+				}else if(d === "note_to_admin"){
+					if(data[d]){
+						$('#' + d).val(data[d]);
+						$('#' + d).show();
+					}else{
+						$('#' + d).hide();
+					}
+				}else{
+					$('#' + d).val(data[d]);
+				}
+			}
+			$('#edit-modal').modal('open');
+		}).fail(function(e){
+			alert("Something went wrong! :(");
+		});
 	});
 
 	$("#edit").click(function (e){

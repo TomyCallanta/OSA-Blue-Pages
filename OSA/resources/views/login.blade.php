@@ -12,14 +12,14 @@
             <h5 class="center-align">Use your OBF Account</h5>
         </div>
         <div class="row center-align">
-            <a class="black-text valign-wrapper g-btn z-depth-1" href="/redirect/google">
+            <a class="black-text valign-wrapper g-btn z-depth-1" href="/api/redirect/google">
                 <img src="{{asset('img/btn_google_light_normal_ios.svg')}}">
                 <span>Sign in with Google</span>
             </a>
         </div>
         <div class="row center-align" style="bottom:10px; position:relative;" >
           <span>New Here?</span>
-          <a href="/redirect/google">Create Account</a>
+          <a href="/api/redirect/google">Create Account</a>
         </div>
     </div>
 </div>
