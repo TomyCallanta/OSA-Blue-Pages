@@ -5,11 +5,17 @@ $(document).ready(function(){
   $(".dropdown-trigger").dropdown();
   $('.tooltipped').tooltip();
   $("select").formSelect();
+  $('.tabs').tabs();
 
   $("#user_dropdown").dropdown({
     'constrainWidth':false,
     'coverTrigger': false
   });
+
+  // $(".card").click(function()){
+  //   window.location = $(this).find('a.link').attr("href");
+  //   return false;
+  // }
 
   $('.chips').chips({
     placeholder:'Enter a tag',

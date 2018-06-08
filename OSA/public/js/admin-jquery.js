@@ -1,5 +1,10 @@
 $(document).ready(function(){
-	var url = "/api/Admin"; 
+	$.ajaxSetup({
+			headers: {
+					'X-CSRF-TOKEN': $('meta[name="_token"]').attr('content')
+			}
+	});
+	var url = "/api/Admin";
 
 	$('.edit').click(function(){
 		var supplier_id = $(this).parent().siblings("input[type='hidden']").val();
@@ -8,10 +13,10 @@ $(document).ready(function(){
 				var field = $('#' + d);
 				if(d === "tags"){
 					var tags = data[d].split('|');
-					
+
 					$('#' + d).chips();
 
-					if(tags){					
+					if(tags){
 						for(t in tags){
 							$('#' + d).chips('addChip', {
 								tag: tags[t]
@@ -29,21 +34,44 @@ $(document).ready(function(){
 					$('#' + d).val(data[d]);
 				}
 			}
+			M.updateTextFields();
 			$('#edit-modal').modal('open');
 		}).fail(function(e){
 			alert("Something went wrong! :(");
 		});
 	});
 
+	$('.button-action').click(function(){
+		var table = $("#suppliers > tbody > input[type='checkbox']:checked");
+		var checked = table.find("input[type='checkbox']:checked").map(function(){
+			return $(this).val();
+		});
+		console.log(checked);
+		var action = $(this).html();
+		var addUrl;
+		var type = "PUT"
+		if(action == 'DELETE'){
+			type="DELETE"
+			addUrl = "/Delete";
+		}else{
+			addUrl ="/Change/" + action + "ed";
+		}
+
+		$.ajax({
+			url: url + addUrl,
+			method: type,
+			data:$('.supplier-id:checkbox:checked').map(function(){
+				return $(this).val();
+			}).get(),
+			success: function(data){
+					location.reload(true); // reload the page
+				},
+			})
+		});
+
 	$("#edit").click(function (e){
 		var viewURL = "/Edit/";
 		var supplier_id = $("#editID").val();
-
-		$.ajaxSetup({
-            headers: {
-                'X-CSRF-TOKEN': $('meta[name="_token"]').attr('content')
-            }
-        })
 
 		e.preventDefault();
 
@@ -58,7 +86,7 @@ $(document).ready(function(){
 			website: field[7].val(),
 			fbpage: field[8].val(),
 			note_to_admin: field[9].val()
-		};	
+		};
 		$.ajax({
 			url: url + viewURL + supplier_id,
 			type: "PUT",
@@ -112,12 +140,12 @@ $(document).ready(function(){
 						rateHTML += ">★ </span>";
 					}
 					rateHTML += "</div>";
-					var comment = "<div class='subText'>" + reviews[i].created_at + "</div";					
-					var html = "<div class='bottomBorder'><strong class='comment-name'>" + data.users[i] + "</strong>" 
+					var comment = "<div class='subText'>" + reviews[i].created_at + "</div";
+					var html = "<div class='bottomBorder'><strong class='comment-name'>" + data.users[i] + "</strong>"
 							   + rateHTML + "<p class='review'>"
 							   + reviews[i].review_content + "</p>"
 							   + comment + "</div>";
-					
+
 					if(i>0){
 						$("#reviewContent").append(html);
 					}else{

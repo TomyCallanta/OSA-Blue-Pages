@@ -41,15 +41,15 @@
 		<div class="card">
 			<div class="card-content">
 				<div class = "buttons-suggest">
-					<div>
+					<div class = "">
 						@if($view == 'Rejected')
 							<a class="waves-effect waves-light btn-small red accent-3 modal-trigger" data-target="reject-modal">DELETE</a>
 						@endif
 						@if($view == 'Suggestion' || $view == 'Accepted')
-							<a class="waves-effect waves-light btn-small red accent-3 modal-trigger" data-target="reject-modal">REJECT</a>
+							<a class="waves-effect waves-light btn-small red accent-3 modal-trigger" data-target="reject-modal">Reject</a>
 						@endif
 						@if($view == 'Suggestion' || $view == 'Rejected')
-							<a class="waves-effect waves-light btn-small blue lighten-1">ACCEPT</a>
+							<a class="button-action waves-effect waves-light btn-small blue lighten-1">Accept</a>
 						@endif
 					</div>
 				</div>
@@ -70,13 +70,12 @@
 					</thead>
 
 					<tbody>
-
 						@if(count($suppliers) > 0)
 						@foreach($suppliers as $supplier)
 						<tr id = "{{$supplier->id}}">
 							<td>
 								<label>
-									<input type="checkbox" value ="{{$supplier->id}}"/>
+									<input class = "supplier-id" type="checkbox" value ="{{$supplier->id}}"/>
 									<span class = "black-text">{{$supplier->company_name}}</span>
 								</label>
 							</td>
@@ -119,11 +118,22 @@
 	</div>
 	<div class = "row">
 		<div class = "col s12">
-			<h6> Warning: the contents will moved to rejected</h6>
-			<p> Rejected data may deleted </p>
+			@if($view =='Rejected')
+				<h6> Warning: the contents will permenently deleted</h6>
+				<p> The data can not be restored</p>
+			@endif
+			@if($view == 'Suggestion' || $view == 'Accepted')
+				<h6> Warning: the contents will moved to Rejected Entries</h6>
+				<p> Rejected data may permenently deleted </p>
+			@endif
 			<div class = "right">
 				<a class="modal-action modal-close waves-effect waves-light grey lighten-1 btn">Cancel</a>
-				<a class="modal-action modal-close waves-effect waves-light red accent-3 btn">REJECT</a>
+				@if($view =='Rejected')
+					<a class="modal-action modal-close waves-effect waves-light red accent-3 btn button-action">DELETE</a>
+				@endif
+				@if($view == 'Suggestion' || $view == 'Accepted')
+					<a class="modal-action modal-close waves-effect waves-light red accent-3 btn button-action">Reject</a>
+				@endif
 			</div>
 
 		</div>

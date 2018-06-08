@@ -41,14 +41,14 @@
 		<!--Cards Instantiator-->
 			<div class="row">
 			@foreach($suppliers as $supplier)
-			  <div id="card" class="col s12 m6 l4">
+			  <div class="col s12 m6 l4">
 			    <div class="card hoverable white">
 			      <div class="card-content">
-			      	<span class="card-title supplier-name"><strong><a class="black-text" href="/supplier/{{$supplier->id}}">{{$supplier->company_name}}</a></strong></span>
-					
+			      	<span class="card-title supplier-name"><strong><a class="link black-text" href="/supplier/{{$supplier->id}}">{{$supplier->company_name}}</a></strong></span>
+
 					<div class="supplier-data overflow-hidden">
-						<a class="black-text" href="{{route('search', ['sort' => $supplier->category_id])}}">{{$categories[$supplier->category_id - 1]->name}}</a>
-				        <p>{{$supplier->contact_no}}</p> 
+						<a class=" black-text" href="{{route('search', ['sort' => $supplier->category_id])}}">{{$categories[$supplier->category_id - 1]->name}}</a>
+				        <p>{{$supplier->contact_no}}</p>
 				        <p><a class="black-text" href="mailto:{{$supplier->email}}">{{$supplier->email}}</a></p>
 					</div>
 
