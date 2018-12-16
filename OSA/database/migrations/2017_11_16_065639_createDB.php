@@ -28,7 +28,7 @@ class CreateDB extends Migration
             $table->string('company_name');
             $table->string('business_name')->nullable();
             $table->string('address')->nullable();
-            $table->string('contact_no');
+            $table->string('contact_no')->nullable();
             $table->string('email')->nullable();
             $table->string('fbpage')->nullable();
             $table->string('website')->nullable();
